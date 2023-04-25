@@ -21,7 +21,7 @@ Para el sistema de los logs se usan dos archivos con distintios lenguajes.
 
 Funciona a partir de una función que se encargar de ejecutar el codigo Python pasandole los parametros necesarios para crear el registro.
 
-<img src="src/img/log1.png" style="width:410px">
+<img src="src/img/log1.png" style="width:500px">
 
 
 <h3>¿Cuando se crean los <strong>logs </strong>?</h3>
