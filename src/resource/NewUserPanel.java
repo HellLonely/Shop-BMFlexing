@@ -233,7 +233,7 @@ public class NewUserPanel extends javax.swing.JFrame {
     private void loginTravelerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTravelerActionPerformed
         this.setVisible(false);
         
-        
+       
     }//GEN-LAST:event_loginTravelerActionPerformed
 
     /**

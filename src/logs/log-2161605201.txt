@@ -1,0 +1,3 @@
+
+Modulo:LogPanel 
+Error:Error en la contraseña 

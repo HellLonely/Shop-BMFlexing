@@ -5,6 +5,7 @@
 package resource;
 
 import javax.swing.*;
+import logic.logSystem;
 
 
 /**
@@ -181,6 +182,7 @@ public class LogPanel extends javax.swing.JFrame {
             MainPanel mainselect = new MainPanel();
             mainselect.setVisible(true);
         }else {
+            logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");
             showMessage("Fallo al iniciar sesión");
         }
     }//GEN-LAST:event_logButonActionPerformed
