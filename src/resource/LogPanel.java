@@ -69,6 +69,7 @@ public class LogPanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BMFlexing | Login");
+        setMinimumSize(new java.awt.Dimension(760, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(67, 88, 130));
