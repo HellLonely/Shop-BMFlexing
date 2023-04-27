@@ -4,6 +4,9 @@
  */
 package resource;
 
+import logic.DAO;
+import logic.passwordManager;
+
 import javax.swing.*;
 
 /**
@@ -114,7 +117,7 @@ public class NewUserPanel extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Metodo de pago");
 
-        paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         paymentMethod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paymentMethodActionPerformed(evt);
@@ -214,11 +217,29 @@ public class NewUserPanel extends javax.swing.JFrame {
 
     private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
         boolean comprobacionContraseñas;
+        String username = usernameCreateInput.getText();
 
-        comprobacionContraseñas = comprobarContraseñas();
-        if( comprobacionContraseñas == false){
-            showMessage("Las contraseñas no coinciden");
+        if(username.equals("")){
+            showMessage("Falta el Username");
+        }else {
+            comprobacionContraseñas = comprobarContraseñas();
+            if( comprobacionContraseñas == false){
+                showMessage("Las contraseñas no coinciden");
+            }else {
+                String hashPassword = passwordCreateInput.getText();
+
+                System.out.println(hashPassword);
+                hashPassword = passwordManager.hashGenerator(hashPassword);
+                String selection = (String) paymentMethod.getSelectedItem();
+                DAO.insertNewUser(username,hashPassword,selection);
+
+                dispose();
+            }
         }
+
+
+
+
 
     }//GEN-LAST:event_createUserActionPerformed
 

@@ -39,9 +39,11 @@ public class LogPanel extends javax.swing.JFrame {
         String usernameIntroducido = usernameInput.getText();
         String passwordIntroducido = passwordInput.getText();
 
-        if (usernameIntroducido.equals("admin") && passwordIntroducido.equals("renaido") ){
-            confirmacionUsername = true;
-        }
+        passwordIntroducido = passwordManager.hashGenerator(passwordIntroducido);
+
+       if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
+           confirmacionUsername = true;
+       }
         
         return confirmacionUsername;
     }
