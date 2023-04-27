@@ -5,7 +5,9 @@
 package resource;
 
 import javax.swing.*;
+import logic.DAO;
 import logic.logSystem;
+import logic.passwordManager;
 
 
 /**
@@ -19,6 +21,7 @@ public class LogPanel extends javax.swing.JFrame {
      */
     public LogPanel() {
         initComponents();
+        DAO.dataBaseTestConection();
     }
     
 
