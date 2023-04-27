@@ -54,6 +54,20 @@ public class LogPanel extends javax.swing.JFrame {
         
         return confirmacionUsername;
     }
+    
+    private boolean comprobarAdministrador(){
+        boolean confirmacionUsername = false;
+        String usernameIntroducido = usernameInput.getText();
+        String passwordIntroducido = passwordInput.getText();
+
+        passwordIntroducido = passwordManager.hashGenerator(passwordIntroducido);
+
+       if ( DAO.loginAdmin(usernameIntroducido, passwordIntroducido) == true){
+           confirmacionUsername = true;
+       }
+        
+        return confirmacionUsername;
+    }
 
 
 
@@ -61,6 +75,8 @@ public class LogPanel extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, text,
                 "AVISO", JOptionPane.WARNING_MESSAGE);
     }
+    
+    
     
 
 
@@ -188,12 +204,24 @@ public class LogPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameInputActionPerformed
 
     private void logButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButonActionPerformed
-
-        if (comprobarInputUsername() == true){
+        String name = usernameInput.getText();
+        
+        if (comprobarAdministrador() == true){
             this.setVisible(false);
             MainPanel mainselect = new MainPanel();
+            System.out.println(name);
+            mainselect.setUsername(name);
+            mainselect.setBoolean(true);
             mainselect.setVisible(true);
-        }else {
+        }else if(comprobarInputUsername() == true){
+            this.setVisible(false);
+            MainPanel mainselect = new MainPanel();
+            System.out.println(name);
+            mainselect.setUsername(name);
+            mainselect.setBoolean(false);
+            mainselect.setVisible(true);
+        }
+        else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");
             showMessage("Fallo al iniciar sesión");
         }
