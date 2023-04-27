@@ -21,7 +21,7 @@ public class LogPanel extends javax.swing.JFrame {
      */
     public LogPanel() {
         initComponents();
-        DAO.dataBaseTestConection();
+        comprobarSistema();
     }
     
 
@@ -33,6 +33,13 @@ public class LogPanel extends javax.swing.JFrame {
     
     
     /* Nuestros metodos internos */
+    
+    private void comprobarSistema(){
+        if (DAO.dataBaseTestConection () == false){
+            showMessage("No se a podido acceder a la base de datos");
+            logSystem.crearLog("DAO -s","Error al conectar con la base de datos. -s");
+        }
+    }
     
     private boolean comprobarInputUsername(){
         boolean confirmacionUsername = false;
@@ -54,8 +61,7 @@ public class LogPanel extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, text,
                 "AVISO", JOptionPane.WARNING_MESSAGE);
     }
-
-
+    
 
 
     @SuppressWarnings("unchecked")

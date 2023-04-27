@@ -1,5 +1,0 @@
-Hora:09:21:19 
-
-Modulo:LogPanel 
-
-Error:Error en la contrase�a 

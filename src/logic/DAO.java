@@ -9,18 +9,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class DAO {
-    public static void dataBaseTestConection (){
+public class DAO {    
+    public static boolean dataBaseTestConection (){
+        boolean connection = false;
+        
         try (Connection conexion = DriverManager.getConnection(
                 "jdbc:mysql://192.168.109.21:3306/bicicletas", "usuario1", "usuario1");) {
             
             System.out.println("Database Connected ✔");
+            connection = true;
        
         } catch (SQLException e) {
             System.out.println("Código de Error: " + e.getErrorCode()
             + "\nSLQState: " + e.getSQLState()
             + "\nMensaje: " + e.getMessage());
         }
+        
+        return connection;
     }
 
     public static void insertNewUser (String username, String password, String payMethod){
@@ -37,6 +42,7 @@ public class DAO {
             System.out.println("Código de Error: " + e.getErrorCode()
                     + "\nSLQState: " + e.getSQLState()
                     + "\nMensaje: " + e.getMessage());
+
         }
     }
 

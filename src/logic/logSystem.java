@@ -15,7 +15,7 @@ public class logSystem {
         try {
             
         // Crear el proceso que ejecuta el archivo Python
-        Process p = Runtime.getRuntime().exec("python src\\logic\\logCreator.py Hora:"+dateFormat.format(date)+" -s Modulo:"+modulo+" Error:"+errorTipo);
+        Process p = Runtime.getRuntime().exec("python src\\logic\\logCreator.py Hora:"+dateFormat.format(date)+" -s Modulo:"+modulo+" Instruccion:"+errorTipo);
         
         // Obtener la salida del proceso
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));

@@ -1,3 +1,0 @@
-Hora:11:24:08 
-Modulo:LogPanel 
-Error:Error en la contraseña 

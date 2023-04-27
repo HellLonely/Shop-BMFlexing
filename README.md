@@ -1,6 +1,6 @@
 
 
-<h1 align="center">Tienda BMFlexing</>
+<h1 align="center">Tienda BMFlexing</h1>
 
 
 
@@ -26,7 +26,9 @@ Funciona a partir de una función que se encargar de ejecutar el codigo Python p
 
 <h3>¿Cuando se crean los <strong>logs </strong>?</h3>
 
-Los logs se crean cuando el usuario hace el **login** a la aplicación ```logButonActionPerformed()``` cuando adquiere alguno de nuestros productos u ocurre algun fallo en el programa.
+Los logs se crean cuando el usuario hace el **login** a la aplicación ```logButonActionPerformed()``` cuando adquiere alguno 
+de nuestros productos, cuando se crea un nuevo usuario ```createUserActionPerformed()```, ocurre algun fallo en el programa 
+(e.j Fallo al conectar con la base de datos ```dataBaseTestConection()```).
 
 
 

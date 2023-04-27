@@ -5,6 +5,7 @@
 package resource;
 
 import logic.DAO;
+import logic.logSystem;
 import logic.passwordManager;
 
 import javax.swing.*;
@@ -232,7 +233,7 @@ public class NewUserPanel extends javax.swing.JFrame {
                 hashPassword = passwordManager.hashGenerator(hashPassword);
                 String selection = (String) paymentMethod.getSelectedItem();
                 DAO.insertNewUser(username,hashPassword,selection);
-
+                logSystem.crearLog("NewUserPanel -s","Se ha creado un usuario nuevo -s");
                 dispose();
             }
         }
