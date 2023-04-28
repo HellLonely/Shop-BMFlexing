@@ -35,7 +35,6 @@ Funciona a partir de una función que se encargar de ejecutar el codigo Python p
 
 <img src="src/img/log1.png" style="width:500px">
 
-
 <h3>¿Cuando se crean los <strong>logs </strong>?</h3>
 
 Los logs se crean cuando el usuario hace el **login** a la aplicación ```logButonActionPerformed()``` cuando adquiere alguno 
