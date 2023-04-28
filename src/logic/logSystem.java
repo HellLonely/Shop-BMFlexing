@@ -5,6 +5,10 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+
 
 
 public class logSystem {
@@ -35,6 +39,16 @@ public class logSystem {
         }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public static void clearLog(){
+        File directory = new File("src\\logs");
+ 
+        for (File file: Objects.requireNonNull(directory.listFiles())) {
+            if (!file.isDirectory()) {
+                file.delete();
+            }
         }
     }
 }

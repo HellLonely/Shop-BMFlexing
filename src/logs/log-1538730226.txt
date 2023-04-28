@@ -1,3 +1,0 @@
-Hora:17:29:24 
-Modulo:NewUserPanel 
-Instruccion:Se ha creado un usuario nuevo 

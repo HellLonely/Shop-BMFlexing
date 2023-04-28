@@ -5,6 +5,7 @@
 package resource;
 
 import javax.swing.JOptionPane;
+import logic.logSystem;
 
 /**
  *
@@ -96,6 +97,11 @@ public class MainPanel extends javax.swing.JFrame {
         labelUsername.setText("Usuario");
 
         buttonAdmin.setText("Ajustes Administrador");
+        buttonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,6 +146,11 @@ public class MainPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
+        // TODO add your handling code here:
+        logSystem.clearLog();
+    }//GEN-LAST:event_buttonAdminActionPerformed
 
     /**
      * @param args the command line arguments

@@ -30,5 +30,10 @@ Los logs se crean cuando el usuario hace el **login** a la aplicación ```logBut
 de nuestros productos, cuando se crea un nuevo usuario ```createUserActionPerformed()```, ocurre algun fallo en el programa 
 (e.j Fallo al conectar con la base de datos ```dataBaseTestConection()```).
 
+<h3>Administración de logs</h3>
+
+Por el momento la unica opción para gestionar los logs de la aplicación
+se encuentra en las funcionalidades de **Admin**, que presenta un botón para
+eliminar los logs ````clearLog()````
 
 
