@@ -3,10 +3,23 @@
 <h1 align="center">Tienda BMFlexing</h1>
 
 
+<h2>Inicio y Login</h2>
+
+En el momento que la aplicación se inicia la primera tarea que hace
+es revisar si todas sus dependencias funcionan ````comprobarSistema()````
+una de estas depencias es la base de datos, el programa lanzara una advertencia de que no hay conexión.
+
+
+<div style="display: flex;justify-content:center">
+    <img src="src/img/warning.png" style="width:270px">
+
+</div>
 
 
 
-<h2>Sistema de logs</h2>
+
+
+<h2>Sistema de logs 📜</h2>
 
 Se crean archivos txt con los siguientes datos:
 

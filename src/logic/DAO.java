@@ -13,7 +13,7 @@ public class DAO {
     
     /* Datos de SQL Conexion */
         
-        private static String conectionIp = "jdbc:mysql://192.168.109.21:3306/bicicletas";
+        private static String conectionIp = "jdbc:mxysql://192.168.109.21:3306/bicicletas";
         private static String userSQL = "usuario1";
         private static String passwordSQL = "usuario1";
     
