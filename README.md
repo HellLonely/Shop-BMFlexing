@@ -12,7 +12,6 @@ una de estas depencias es la base de datos, el programa lanzara una advertencia 
 
 <div style="display: flex;justify-content:center">
     <img src="src/img/warning.png" style="width:270px">
-
 </div>
 
 
