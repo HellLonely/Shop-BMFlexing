@@ -4,6 +4,10 @@
  */
 package resource;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
@@ -77,7 +81,23 @@ public class LogPanel extends javax.swing.JFrame {
     }
     
     
-    
+    class logPanelMain extends JPanel {
+        protected void paintComponentGradient(Graphics g){
+            Graphics2D g2d = (Graphics2D) g;
+            int width = getWidth();
+            int height = getHeight();
+            
+            Color color1 = new Color(52,143,80);
+            Color color2 = new Color(86,180,211);
+            
+            GradientPaint gp = new GradientPaint(0,0,color1,180,height,color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, height);
+            
+            
+            
+        }
+    }
 
 
     @SuppressWarnings("unchecked")
@@ -85,7 +105,13 @@ public class LogPanel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        try {
+            logPanel =(javax.swing.JPanel)java.beans.Beans.instantiate(getClass().getClassLoader(), "resource.LogPanel_logPanel");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
         jLabel1 = new javax.swing.JLabel();
         usernameInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -113,8 +139,6 @@ public class LogPanel extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
-
-        jPanel2.setBackground(new java.awt.Color(108, 131, 190));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         jLabel1.setText("Login");
@@ -151,32 +175,32 @@ public class LogPanel extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout logPanelLayout = new javax.swing.GroupLayout(logPanel);
+        logPanel.setLayout(logPanelLayout);
+        logPanelLayout.setHorizontalGroup(
+            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logPanelLayout.createSequentialGroup()
                 .addContainerGap(107, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(180, 180, 180))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logPanelLayout.createSequentialGroup()
+                        .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(usernameInput)
                             .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logPanelLayout.createSequentialGroup()
                         .addComponent(logButon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(createUserTraveler)
                         .addGap(93, 93, 93))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        logPanelLayout.setVerticalGroup(
+            logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
@@ -188,13 +212,13 @@ public class LogPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logButon)
                     .addComponent(createUserTraveler))
                 .addGap(39, 39, 39))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 430, 330));
+        getContentPane().add(logPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 430, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,8 +304,8 @@ public class LogPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logButon;
+    private javax.swing.JPanel logPanel;
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables

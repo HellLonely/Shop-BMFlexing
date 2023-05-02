@@ -22,7 +22,6 @@ public class MainPanel extends javax.swing.JFrame {
 
     public void setUsername(String username) {
         this.username = username;
-        System.out.println(username + "1");
         labelUsername.setText(username);
         
         changeProfileImg(username);
