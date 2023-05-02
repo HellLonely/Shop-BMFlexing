@@ -66,7 +66,7 @@ public class AdminPanel extends javax.swing.JFrame {
         usernameAdmin.setText("Usuario");
 
         adminType.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        adminType.setText("Usuario");
+        adminType.setText("Permisos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,12 +79,12 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addComponent(dadaWdDAWd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adminType)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(162, 162, 162)
                     .addComponent(usernameAdmin)
-                    .addContainerGap(494, Short.MAX_VALUE)))
+                    .addContainerGap(485, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +105,7 @@ public class AdminPanel extends javax.swing.JFrame {
                     .addContainerGap(86, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, -1));
 
         jButton1.setText("Insert Recambio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
