@@ -20,7 +20,16 @@ una de estas depencias es la base de datos, el programa lanzara una advertencia 
 
 Como en toda aplicación necesitamos administrar a los usuarios o el contenido de la base de datos.
 
+Para administrar **BMFlexing** todos los administradores tendran un panel el cual podran realizar distintas tareas.
 
+<ol>
+    <li>Añadir recambios</li>
+    <li>Añadir bicicletas</li>
+    <li>Crear usuarios</li>
+    <li>Gestionar Usuarios</li>
+    <li>Crear administradores</li>
+    <li>Gestionar administradores</li>
+</ol>
 
 
 
