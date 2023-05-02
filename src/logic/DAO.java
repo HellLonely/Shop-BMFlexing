@@ -101,4 +101,28 @@ public class DAO {
         }
         return  loginSuccescfully;
     }
+    
+    public static String getAdminTipo(String username){
+        String tipoAdmin = "No fuchusca";
+        String sentencia = "select AdTipo from administrador where AdNombre = '"+username+"';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            while(resultado.next()){
+                tipoAdmin = resultado.getString(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+        return tipoAdmin;
+    }
+    
+    
+    
 }

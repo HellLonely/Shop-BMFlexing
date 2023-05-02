@@ -16,6 +16,12 @@ una de estas depencias es la base de datos, el programa lanzara una advertencia 
 
 
 
+<h2> Administración 👷‍♂️</h2>
+
+Como en toda aplicación necesitamos administrar a los usuarios o el contenido de la base de datos.
+
+
+
 
 
 <h2>Sistema de logs 📜</h2>
