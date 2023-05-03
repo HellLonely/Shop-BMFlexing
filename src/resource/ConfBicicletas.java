@@ -107,11 +107,6 @@ public class ConfBicicletas extends javax.swing.JFrame {
         });
 
         Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR"}));
-        Shock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShockActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Cuadro");
 
