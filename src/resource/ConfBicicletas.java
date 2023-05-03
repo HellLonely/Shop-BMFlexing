@@ -4,6 +4,8 @@
  */
 package resource;
 
+import logic.CreaciónFactura;
+
 /**
  *
  * @author a22ricardova
@@ -15,6 +17,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
      */
     public ConfBicicletas() {
         initComponents();
+        CreaciónFactura generacion= new CreaciónFactura(0, "bicicleta");
     }
 
     /**
@@ -259,6 +262,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         System.out.println(nombreShock);
+        int precioShock= DAO.actualizarPrecios;
     }//GEN-LAST:event_ShockActionPerformed
 
     /**

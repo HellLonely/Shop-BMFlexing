@@ -202,4 +202,24 @@ public class DAO {
         return array;
     }
     
+    
+    public static int actualizarPrecios (String Nome){
+        String query = "select RePrecio from recambios where ReNomre="+Nome;
+        int precio=0;
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet retorno=ps.executeQuery(query);
+                while (retorno.next()){
+                    precio=retorno.getInt(1);
+                }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+        return precio;
+    }
+    
 }
