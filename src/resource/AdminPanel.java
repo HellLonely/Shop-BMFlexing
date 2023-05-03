@@ -4,7 +4,7 @@
  */
 package resource;
 
-import adminToolsJFrames.adminInsertRecambio;
+import adminToolsJFrames.adminTabManageMenu;
 import logic.DAO;
 
 /**
@@ -138,7 +138,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        adminInsertRecambio recambio = new adminInsertRecambio();
+        adminTabManageMenu recambio = new adminTabManageMenu();
         recambio.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
