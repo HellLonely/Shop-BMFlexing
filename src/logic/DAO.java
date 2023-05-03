@@ -159,9 +159,6 @@ public class DAO {
            
         }
         
-        System.out.println("Hehca dxwaDwwwwwwwwwwwwwwwwwwww");
-        
-        
         String[][] array = new String[facturas][6];
         
         String sentencia = "select FacId, FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo from factura";
