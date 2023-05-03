@@ -92,11 +92,26 @@ public class ConfBicicletas extends javax.swing.JFrame {
             }
         });
 
-        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox 34 Factory", "RockShox Pike Ultimate", "RockShox SID Ultimate" }));
+        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox 34 Factory", "RockShox Pike Ultimate", "RockShox SID Ultimate"  }));
+        Horquilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HorquillaActionPerformed(evt);
+            }
+        });
 
-        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Shimano XTR", "SRAM Code RSC", "Shimano XTR"}));
+        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Shimano XTR", "SRAM Code RSC", "Shimano XTR" }));
+        Frenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FrenosActionPerformed(evt);
+            }
+        });
 
-        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR" }));
+        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR"}));
+        Shock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShockActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Cuadro");
 
@@ -118,11 +133,6 @@ public class ConfBicicletas extends javax.swing.JFrame {
         jLabel9.setText("€");
 
         jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -223,16 +233,38 @@ public class ConfBicicletas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CuadroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuadroActionPerformed
-        // TODO add your handling code here:
+        String nombreCuadro;
+        nombreCuadro= (String) Cuadro.getSelectedItem();
+        System.out.println(nombreCuadro);
     }//GEN-LAST:event_CuadroActionPerformed
 
     private void RuedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RuedasActionPerformed
-        // TODO add your handling code here:
+        String nombreRuedas;
+        nombreRuedas= (String) Ruedas.getSelectedItem();
+        System.out.println(nombreRuedas);
     }//GEN-LAST:event_RuedasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
+        String nombreHorquilla;
+        nombreHorquilla= (String) Horquilla.getSelectedItem();
+        System.out.println(nombreHorquilla);
+    }//GEN-LAST:event_HorquillaActionPerformed
+
+    private void FrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrenosActionPerformed
+        String nombreFrenos;
+        nombreFrenos= (String) Frenos.getSelectedItem();
+        System.out.println(nombreFrenos);
+    }//GEN-LAST:event_FrenosActionPerformed
+
+    private void ShockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShockActionPerformed
+        String nombreShock;
+        nombreShock= (String) Shock.getSelectedItem();
+        System.out.println(nombreShock);
+    }//GEN-LAST:event_ShockActionPerformed
 
     /**
      * @param args the command line arguments
