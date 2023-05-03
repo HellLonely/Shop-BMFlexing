@@ -5,6 +5,7 @@
 package resource;
 
 import logic.CreaciónFactura;
+import logic.DAO;
 
 /**
  *
@@ -262,7 +263,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         System.out.println(nombreShock);
-        int precioShock= DAO.actualizarPrecios;
+        /*int precioShock= DAO.actualizarPrecios();*/
     }//GEN-LAST:event_ShockActionPerformed
 
     /**
