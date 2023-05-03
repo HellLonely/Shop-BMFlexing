@@ -5,6 +5,7 @@
 package adminToolsJFrames;
 
 import javax.swing.table.DefaultTableModel;
+import logic.DAO;
 
 /**
  *
@@ -31,20 +32,21 @@ public class adminToolsFacturas extends javax.swing.JFrame {
         
         jTable1.setModel(model);
         
-        String[] dato = new String[6];
-        
-        dato[0] = "1";
-        dato[1] = "Importe";
-        dato[2] = "Manolo";
-        dato[3] = "Felipe";
-        dato[4] = "Bici to chula";
-        dato[5] = "Vici";
+        String[][] dato = DAO.modeloFactura();
+
         
         for (int i =0; i<dato.length;i++){
-            System.out.println(dato[i]);
+            String [] input = new String[6];
+            for (int x = 0; x<dato[i].length;x++){
+                System.out.println(dato[i][x]);
+                input[x] = dato[i][x];
+            }
+             model.addRow(input);
         }
         
-        model.addRow(dato);
+        
+        
+    
 
     }
 
