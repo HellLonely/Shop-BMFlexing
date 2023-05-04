@@ -204,7 +204,7 @@ public class DAO {
     
     
     public static int actualizarPrecios (String Nome){
-        String query = "select RePrecio from recambios where ReNomre="+Nome;
+        String query = "select RePrecio from recambios where ReNombre = '"+Nome+"';";
         int precio=0;
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
