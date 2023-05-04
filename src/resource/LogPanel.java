@@ -240,6 +240,7 @@ public class LogPanel extends javax.swing.JFrame {
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
             MainPanel mainselect = new MainPanel();
+            mainselect.setUserId(2);
             System.out.println(name);
             mainselect.setUsername(name);
             mainselect.setBoolean(false);

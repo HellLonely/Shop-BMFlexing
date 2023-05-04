@@ -20,6 +20,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     public adminTabManageMenu() {
         initComponents();
         initTipoRecambios();
+        insertUsersinTable();
     }
     
     private void initTipoRecambios(){
@@ -65,6 +66,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         insertRecambioPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -88,13 +90,22 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
 
+        jPopupMenu1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPopupMenu1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(108, 131, 190));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Insertar Recambio");
-        insertUsersinTable();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -221,7 +232,22 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        
+        UsersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nombre", "Pago", "Fecha Creacion"
+            }
+        ));
+        UsersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                UsersTableMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(UsersTable);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -250,13 +276,13 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(65, 65, 65)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6)
                             .addComponent(jTextField1)
                             .addComponent(jLabel7)
                             .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                        .addContainerGap(107, Short.MAX_VALUE))))
+                        .addContainerGap(88, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,6 +355,14 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jPopupMenu1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPopupMenu1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPopupMenu1AncestorAdded
+
+    private void UsersTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersTableMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsersTableMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +416,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
