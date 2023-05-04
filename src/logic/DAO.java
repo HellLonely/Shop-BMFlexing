@@ -7,7 +7,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -219,4 +222,64 @@ public class DAO {
         return precio;
     }
     
+    
+    public static String[][] getUsuariosDatos(){
+        
+        int numUsuarios = 0;
+        
+        String query = "select count(*) from usuario;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                numUsuarios = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[][] array = new String[numUsuarios][4];
+        
+        String sentencia = "select UsId, UsNombre, UsPago, UsFechaCuenta from usuario;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Facturas "+ numUsuarios);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+            while(resultado.next()){
+                array[i][0] = Integer.toString(resultado.getInt(1));
+                array[i][1] = resultado.getString(2);
+                array[i][2] = resultado.getString(3);
+                array[i][3] = dateFormat.format(resultado.getDate(4));
+
+                
+                /*
+                for (int j = 0; j < array.length ; j++){
+                    System.out.println(array[i][0]);
+                    System.out.println(array[i][1]);
+                    System.out.println(array[i][2]);
+                    System.out.println(array[i][3]);
+                }
+                */
+               
+                i++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
 }

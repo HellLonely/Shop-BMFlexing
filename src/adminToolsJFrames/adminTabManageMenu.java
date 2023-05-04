@@ -40,11 +40,12 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         
         UsersTable.setModel(model);
         
-        String[][] dato = DAO.modeloFactura();
-
+        String[][] dato = DAO.getUsuariosDatos();
+        
+        
         
         for (int i =0; i<dato.length;i++){
-            String [] input = new String[6];
+            String [] input = new String[4];
             for (int x = 0; x<dato[i].length;x++){
                 System.out.println(dato[i][x]);
                 input[x] = dato[i][x];
@@ -93,6 +94,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Insertar Recambio");
+        insertUsersinTable();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -219,17 +221,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        UsersTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id", "Nombre", "Pago", "Fecha Creacion"
-            }
-        ));
+        
         jScrollPane1.setViewportView(UsersTable);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

@@ -32,7 +32,6 @@ Para administrar **BMFlexing** todos los administradores tendran un panel el cua
 </ol>
 
 
-
 <h2>Sistema de logs 📜</h2>
 
 Se crean archivos txt con los siguientes datos:
