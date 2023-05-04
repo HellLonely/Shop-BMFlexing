@@ -4,7 +4,8 @@
  */
 package resource;
 
-import logic.CreaciónFactura;
+import logic.CreacionFactura;
+import logic.DAO;
 
 /**
  *
@@ -17,7 +18,6 @@ public class ConfBicicletas extends javax.swing.JFrame {
      */
     public ConfBicicletas() {
         initComponents();
-        CreaciónFactura generacion= new CreaciónFactura(0, "bicicleta");
     }
 
     /**
@@ -109,7 +109,12 @@ public class ConfBicicletas extends javax.swing.JFrame {
             }
         });
 
-        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR"}));
+        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR" }));
+        Shock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShockActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Cuadro");
 
@@ -127,10 +132,20 @@ public class ConfBicicletas extends javax.swing.JFrame {
 
         PrecioFinal.setEditable(false);
         PrecioFinal.setText("0");
+        PrecioFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrecioFinalActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("€");
 
         jButton1.setText("Comprar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -233,13 +248,37 @@ public class ConfBicicletas extends javax.swing.JFrame {
     private void CuadroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuadroActionPerformed
         String nombreCuadro;
         nombreCuadro= (String) Cuadro.getSelectedItem();
-        System.out.println(nombreCuadro);
+        String nombreRuedas;
+        nombreRuedas= (String) Ruedas.getSelectedItem();
+        String nombreHorquilla;
+        nombreHorquilla= (String) Horquilla.getSelectedItem();
+        String nombreFrenos;
+        nombreFrenos= (String) Frenos.getSelectedItem();
+        String nombreShock;
+        nombreShock= (String) Shock.getSelectedItem();
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+        CreacionFactura generacion=crearFactura();
+        generacion.setPrecioTotal(nuevoPrecio); 
+        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_CuadroActionPerformed
 
     private void RuedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RuedasActionPerformed
+        String nombreCuadro;
+        nombreCuadro= (String) Cuadro.getSelectedItem();
         String nombreRuedas;
         nombreRuedas= (String) Ruedas.getSelectedItem();
-        System.out.println(nombreRuedas);
+        String nombreHorquilla;
+        nombreHorquilla= (String) Horquilla.getSelectedItem();
+        String nombreFrenos;
+        nombreFrenos= (String) Frenos.getSelectedItem();
+        String nombreShock;
+        nombreShock= (String) Shock.getSelectedItem();
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+        CreacionFactura generacion=crearFactura();
+        generacion.setPrecioTotal(nuevoPrecio); 
+        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_RuedasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -247,23 +286,62 @@ public class ConfBicicletas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
+        String nombreCuadro;
+        nombreCuadro= (String) Cuadro.getSelectedItem();
+        String nombreRuedas;
+        nombreRuedas= (String) Ruedas.getSelectedItem();
         String nombreHorquilla;
         nombreHorquilla= (String) Horquilla.getSelectedItem();
-        System.out.println(nombreHorquilla);
+        String nombreFrenos;
+        nombreFrenos= (String) Frenos.getSelectedItem();
+        String nombreShock;
+        nombreShock= (String) Shock.getSelectedItem();
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+        CreacionFactura generacion=crearFactura();
+        generacion.setPrecioTotal(nuevoPrecio); 
+        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_HorquillaActionPerformed
 
     private void FrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrenosActionPerformed
+        String nombreCuadro;
+        nombreCuadro= (String) Cuadro.getSelectedItem();
+        String nombreRuedas;
+        nombreRuedas= (String) Ruedas.getSelectedItem();
+        String nombreHorquilla;
+        nombreHorquilla= (String) Horquilla.getSelectedItem();
         String nombreFrenos;
         nombreFrenos= (String) Frenos.getSelectedItem();
-        System.out.println(nombreFrenos);
+        String nombreShock;
+        nombreShock= (String) Shock.getSelectedItem();
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+        CreacionFactura generacion=crearFactura();
+        generacion.setPrecioTotal(nuevoPrecio); 
+        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_FrenosActionPerformed
 
     private void ShockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShockActionPerformed
+        String nombreCuadro;
+        nombreCuadro= (String) Cuadro.getSelectedItem();
+        String nombreRuedas;
+        nombreRuedas= (String) Ruedas.getSelectedItem();
+        String nombreHorquilla;
+        nombreHorquilla= (String) Horquilla.getSelectedItem();
+        String nombreFrenos;
+        nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
-        System.out.println(nombreShock);
-        int precioShock= DAO.actualizarPrecios;
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+        CreacionFactura generacion=crearFactura();
+        generacion.setPrecioTotal(nuevoPrecio); 
+        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_ShockActionPerformed
+
+    private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,6 +376,11 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 new ConfBicicletas().setVisible(true);
             }
         });
+    }
+    
+    public static CreacionFactura crearFactura() {
+        CreacionFactura generacion= new CreacionFactura(0, "bicicleta");
+        return generacion;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
