@@ -4,7 +4,11 @@
  */
 package resource;
 
+
+
+
 import logic.CreacionFactura;
+
 import logic.DAO;
 
 /**
@@ -332,11 +336,16 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
+
+        System.out.println(nombreShock);
+        /*int precioShock= DAO.actualizarPrecios();*/
+
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
         CreacionFactura generacion=crearFactura();
         generacion.setPrecioTotal(nuevoPrecio); 
         String setPrecio= Integer.toString(generacion.getPrecioTotal());
         PrecioFinal.setText(setPrecio);
+
     }//GEN-LAST:event_ShockActionPerformed
 
     private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed
