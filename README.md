@@ -59,6 +59,39 @@ de nuestros productos, cuando se crea un nuevo usuario ```createUserActionPerfor
 
 Por el momento la unica opción para gestionar los logs de la aplicación
 se encuentra en las funcionalidades de **Admin**, que presenta un botón para
-eliminar los logs ````clearLog()````
+eliminar los logs ```clearLog()```
+
+
+<h2> DAO 🐬</h2>
+
+En esta clase se almacenan todos los metodos que realizan alguna consulta a la base de datos. 
+
+Esta clase consta de solo 3 atributos.
+
+```java
+    private static String connectionJDBC;
+    private static String userSQL;
+    private static String passwordSQL;
+```
+
+<h4>connectionJDBC</h4>
+<p>A esta variable se le pasa el link del conector a la base de datos.</p>
+
+```jdbc:mysql://ipDeDestino:puerto/baseDeDatos```
+
+<h4>userSQL y passwordSQL</h3>
+
+Son basicamente el usuario y la contraseña de la conexion a la base de datos.
+
+<h3>Estructura básica de los metodos </h3>
+
+Todos los metodos contiene una estructura **try, catch**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas.
+
+``` Java
+try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentencia))
+```
+
+Si la conexion es posible se ejecuta el contenido si no
+devuelve el mensaje de error SQL ````e.getErrorCode() ````  obtener el codigo de error ````e.getSQLState()```` y el mensaje que nos devuelve  ````e.getMessage()```` .
 
 
