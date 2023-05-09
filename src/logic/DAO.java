@@ -282,4 +282,244 @@ public class DAO {
 
         return array;
     }
+    public static String[] piezasCuadro(){
+        
+        int piezas = 0;
+        
+        String query = "select count(*) from recambios where ReTipo = 'cuadro';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                piezas = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[] array = new String[piezas];
+        
+        String sentencia = "select ReNombre from recambios where ReTipo = 'cuadro';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Piezas "+ piezas);
+            while(resultado.next()){
+                if (i <= piezas){
+                    String pieza = resultado.getString(1);
+                    array [i] = pieza;
+                    i++; 
+                }     
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+    
+    public static String[] piezasRuedas(){
+        
+        int piezas = 0;
+        
+        String query = "select count(*) from recambios where ReTipo = 'ruedas';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                piezas = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[] array = new String[piezas];
+        
+        String sentencia = "select ReNombre from recambios where ReTipo = 'ruedas';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Piezas "+ piezas);
+            while(resultado.next()){
+                if (i <= piezas){
+                    String pieza = resultado.getString(1);
+                    array [i] = pieza;
+                    i++; 
+                }     
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+    
+    public static String[] piezasFrenos(){
+        
+        int piezas = 0;
+        
+        String query = "select count(*) from recambios where ReTipo = 'frenos';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                piezas = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[] array = new String[piezas];
+        
+        String sentencia = "select ReNombre from recambios where ReTipo = 'frenos';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Piezas "+ piezas);
+            while(resultado.next()){
+                if (i <= piezas){
+                    String pieza = resultado.getString(1);
+                    array [i] = pieza;
+                    i++; 
+                }     
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+    
+    public static String[] piezasShock(){
+        
+        int piezas = 0;
+        
+        String query = "select count(*) from recambios where ReTipo = 'shock';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                piezas = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[] array = new String[piezas];
+        
+        String sentencia = "select ReNombre from recambios where ReTipo = 'shock';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Piezas "+ piezas);
+            while(resultado.next()){
+                if (i <= piezas){
+                    String pieza = resultado.getString(1);
+                    array [i] = pieza;
+                    i++; 
+                }     
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+    
+     public static String[] piezasHorquilla(){
+        
+        int piezas = 0;
+        
+        String query = "select count(*) from recambios where ReTipo = 'horquilla';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                piezas = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[] array = new String[piezas];
+        
+        String sentencia = "select ReNombre from recambios where ReTipo = 'horquilla';";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Piezas "+ piezas);
+            while(resultado.next()){
+                if (i <= piezas){
+                    String pieza = resultado.getString(1);
+                    array [i] = pieza;
+                    i++; 
+                }     
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+    
 }

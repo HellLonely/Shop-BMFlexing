@@ -22,8 +22,54 @@ public class ConfBicicletas extends javax.swing.JFrame {
      */
     public ConfBicicletas() {
         initComponents();
+        allComboBox();
     }
-
+    
+    private void allComboBox(){
+        rellenarCuadroComboBox();
+        rellenarRuedasComboBox();
+        rellenarFrenosComboBox();
+        rellenarShockComboBox();
+        rellenarHorquillaComboBox();
+    
+    }
+    
+    private void rellenarCuadroComboBox(){
+        String[] array = DAO.piezasCuadro();
+        for (int i = 0; i<array.length;i++){
+            Cuadro.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarRuedasComboBox(){
+        String[] array = DAO.piezasRuedas();
+        for (int i = 0; i<array.length;i++){
+            Ruedas.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarFrenosComboBox(){
+        String[] array = DAO.piezasFrenos();
+        for (int i = 0; i<array.length;i++){
+            Frenos.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarShockComboBox(){
+        String[] array = DAO.piezasShock();
+        for (int i = 0; i<array.length;i++){
+            Shock.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarHorquillaComboBox(){
+        String[] array = DAO.piezasHorquilla();
+        for (int i = 0; i<array.length;i++){
+            Horquilla.addItem(array[i]);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,35 +132,35 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         Cuadro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CuadroActionPerformed(evt);
             }
         });
 
-        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Ruedas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RuedasActionPerformed(evt);
             }
         });
 
-        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         Horquilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HorquillaActionPerformed(evt);
             }
         });
 
-        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Frenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FrenosActionPerformed(evt);
             }
         });
 
-        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Shock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShockActionPerformed(evt);
@@ -222,7 +268,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
                     .addComponent(Frenos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +298,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(Ruedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
