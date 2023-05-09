@@ -85,35 +85,35 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Specialized S-Works", "Giant Reign", "Yt Tues Core 4", "Mondraker Summun RR" }));
+        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Cuadro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CuadroActionPerformed(evt);
             }
         });
 
-        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mavic Ksyrium Elite", "Zipp 404 Firecrest", "Shimano Dura-Ace", "Mavic Ksyrium Elite" }));
+        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Ruedas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RuedasActionPerformed(evt);
             }
         });
 
-        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox 34 Factory", "RockShox Pike Ultimate", "RockShox SID Ultimate"  }));
+        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Horquilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HorquillaActionPerformed(evt);
             }
         });
 
-        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Shimano XTR", "SRAM Code RSC", "Shimano XTR" }));
+        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Frenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FrenosActionPerformed(evt);
             }
         });
 
-        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fox Float DPX2", "Fox Float DPX1", "Super Deluxe RCT", "Marzocchi Bomber CR" }));
+        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Shock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShockActionPerformed(evt);
@@ -336,16 +336,12 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
-
         System.out.println(nombreShock);
-        /*int precioShock= DAO.actualizarPrecios();*/
-
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
         CreacionFactura generacion=crearFactura();
         generacion.setPrecioTotal(nuevoPrecio); 
         String setPrecio= Integer.toString(generacion.getPrecioTotal());
         PrecioFinal.setText(setPrecio);
-
     }//GEN-LAST:event_ShockActionPerformed
 
     private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed
