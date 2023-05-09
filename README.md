@@ -88,7 +88,7 @@ Son basicamente el usuario y la contraseña de la conexion a la base de datos.
 Todos los metodos contiene una estructura **try, catch**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas.
 
 ``` Java
-try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentencia))
+try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentenciaSQL))
 ```
 
 Si la conexion es posible se ejecuta el contenido si no
