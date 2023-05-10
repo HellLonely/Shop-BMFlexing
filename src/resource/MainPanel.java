@@ -37,7 +37,6 @@ public class MainPanel extends javax.swing.JFrame {
         this.admin = admin;
         toggleAdminButton(admin);
         if (admin == true){
-            showMessage("Admin");
             buttonAdmin.setVisible(true);
         }else{
             buttonAdmin.setVisible(false);

@@ -6,6 +6,9 @@ package adminToolsJFrames;
 
 import javax.swing.table.DefaultTableModel;
 import logic.DAO;
+import java.awt.Component;
+import javax.swing.JMenuItem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,7 +46,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         
         String[][] dato = DAO.getUsuariosDatos();
         
-        
+    
         
         for (int i =0; i<dato.length;i++){
             String [] input = new String[4];
@@ -53,8 +56,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
             }
              model.addRow(input);
         }
-        
-        
+ 
     }
 
     /**
@@ -67,6 +69,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         insertRecambioPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -136,7 +139,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
             }
         });
 
-        comboRecambios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboRecambios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Tipo de pieza:");
@@ -340,6 +343,43 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_insertButtonRecambioActionPerformed
 
+    private void mostrarMenuContextual(Component componente, int x, int y) {
+        JMenuItem jMenuItem1 = new javax.swing.JMenuItem();
+        JMenuItem jMenuItem2 = new javax.swing.JMenuItem();
+        
+        jMenuItem1.setText("Uno");
+        jPopupMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Dos");
+        jPopupMenu2.add(jMenuItem2);
+        
+        jPopupMenu2.show(componente, x, y);
+    }
+    
+    private void tablaMouseReleased(java.awt.event.MouseEvent evt) {                                    
+        System.out.println("Detectado evento 3");
+        //popup.show(evt.getComponent(), evt.getX(), evt.getY());
+        if (evt.isPopupTrigger()) {
+            mostrarMenuContextual(evt.getComponent(), evt.getX(), evt.getY());
+            System.out.println("Release");
+        }
+    }
+    
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+      // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+    
+    private void tablaMousePressed(java.awt.event.MouseEvent evt) {
+        if (evt.isPopupTrigger()) {
+            mostrarMenuContextual(evt.getComponent(), evt.getX(), evt.getY());
+            System.out.println("Release");
+        }
+    }
+
+
+                                   
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -417,6 +457,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;

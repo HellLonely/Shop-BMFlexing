@@ -4,9 +4,12 @@
  */
 package resource;
 
+import javax.swing.JOptionPane;
+
 import adminToolsJFrames.adminTabManageMenu;
 import adminToolsJFrames.adminToolsFacturas;
 import logic.DAO;
+import logic.logSystem;
 
 /**
  *
@@ -45,6 +48,15 @@ public class AdminPanel extends javax.swing.JFrame {
     private void setAdminType(String username){
        adminType.setText( DAO.getAdminTipo(username));
     }
+
+    private void showAdvertisment(){
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿ Quieres elmininar todos los registros del Log ?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+        if(respuesta == JOptionPane.YES_OPTION){
+            logSystem.clearLog();
+        }
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -58,6 +70,7 @@ public class AdminPanel extends javax.swing.JFrame {
         adminPanelJ = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,6 +141,13 @@ public class AdminPanel extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Eliminar Logs");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout adminPanelJLayout = new javax.swing.GroupLayout(adminPanelJ);
         adminPanelJ.setLayout(adminPanelJLayout);
         adminPanelJLayout.setHorizontalGroup(
@@ -136,7 +156,8 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(591, Short.MAX_VALUE))
         );
         adminPanelJLayout.setVerticalGroup(
@@ -146,7 +167,9 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton3)
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         getContentPane().add(adminPanelJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 152, 720, 430));
@@ -166,6 +189,13 @@ public class AdminPanel extends javax.swing.JFrame {
         facturas.setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        showAdvertisment();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    
 
     /**
      * @param args the command line arguments
@@ -208,6 +238,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel dadaWdDAWd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel usernameAdmin;
