@@ -630,4 +630,45 @@ public class DAO {
         }
     }
      
+     
+     public static void promoteUser(int UserId){
+        String[] array = new String[2];
+        
+        String sentencia = "select UsNombre, UsContraseña from usuario where UsId = "+UserId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+
+            while(resultado.next()){
+                array[0] = resultado.getString(1);
+                array[1] = resultado.getString(2);
+                
+                System.out.println(array[0]);
+                System.out.println(array[1]);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+        
+        String query = "insert into administrador (AdNombre,AdTipo,AdFechaEntrada,AdContraseña) values ('"+array[0]+"','empleado',now(),'"+array[1]+"');";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+        
+    }
+     
 }

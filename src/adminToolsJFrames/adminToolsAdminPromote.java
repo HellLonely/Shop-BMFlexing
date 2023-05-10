@@ -104,6 +104,10 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         textIdAdmin = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         deleteAdminButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        textIdUsuario = new javax.swing.JTextField();
+        promoteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,12 +186,30 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Eliminar Administrador");
+        jLabel10.setText("Promover Usuario");
 
         deleteAdminButton.setText("Eliminar");
         deleteAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteAdminButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setText("Eliminar Administrador");
+
+        jLabel12.setText("Inserta Id");
+
+        textIdUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textIdUsuarioActionPerformed(evt);
+            }
+        });
+
+        promoteUser.setText("Promover");
+        promoteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                promoteUserActionPerformed(evt);
             }
         });
 
@@ -217,13 +239,21 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
                                     .addComponent(textIdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel10)
-                                    .addComponent(deleteAdminButton))
+                                    .addComponent(deleteAdminButton)
+                                    .addComponent(jLabel12)
+                                    .addComponent(textIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(promoteUser))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(26, 26, 26)
                     .addComponent(jLabel9)
                     .addContainerGap(536, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(437, Short.MAX_VALUE)
+                    .addComponent(jLabel11)
+                    .addGap(137, 137, 137)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,8 +263,7 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(17, 17, 17)
+                        .addGap(42, 42, 42)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textIdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,19 +272,33 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addGap(15, 15, 15))))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(promoteUser))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(jLabel9)
                     .addContainerGap(443, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(134, 134, 134)
+                    .addComponent(jLabel11)
+                    .addContainerGap(406, Short.MAX_VALUE)))
         );
 
         pack();
@@ -292,6 +335,29 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_deleteAdminButtonActionPerformed
+
+    private void textIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textIdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textIdUsuarioActionPerformed
+
+    private void promoteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promoteUserActionPerformed
+        // TODO add your handling code here:
+        String idUser = textIdUsuario.getText();
+        
+        if(idUser.isEmpty()){
+            showMessage("Debes inserta una id");
+        }else{
+            int userId = Integer.parseInt(idUser);
+            try{
+                DAO.promoteUser(userId);
+            }catch(Exception e ){
+                showMessage("Id no valida");
+            }
+            showInfo("Se a agregado a la lista de usuarios");
+            insertAdminsinTable();
+        
+        }
+    }//GEN-LAST:event_promoteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,13 +400,17 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton promoteUser;
     private javax.swing.JTable tablaAdmins;
     private javax.swing.JTextField textIdAdmin;
+    private javax.swing.JTextField textIdUsuario;
     // End of variables declaration//GEN-END:variables
 }
