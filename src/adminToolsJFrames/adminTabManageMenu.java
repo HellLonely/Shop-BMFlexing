@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import logic.DAO;
 import java.awt.Component;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,6 +58,16 @@ public class adminTabManageMenu extends javax.swing.JFrame {
              model.addRow(input);
         }
  
+    }
+
+    private void showMessage(String text){
+        JOptionPane.showMessageDialog(this, text,
+                "AVISO", JOptionPane.WARNING_MESSAGE);
+    }
+
+    private void showInfo(String text){
+        JOptionPane.showMessageDialog(this, text,
+                "AVISO", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -201,7 +212,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                     .addComponent(insertButtonRecambio))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Recambios", insertRecambioPanel);
@@ -301,7 +312,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addComponent(jButton3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -319,7 +330,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
         pack();
@@ -335,12 +346,17 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         String precio = precioRecambioInput.getText();
         String tipo = (String) comboRecambios.getSelectedItem();
 
-        try{
-            DAO.insertRecambio(nombre, precio, tipo);
-            dispose();
-        } catch(Exception e){
-
+        if(nombre.isEmpty() || precio.isEmpty() || tipo.isEmpty()){
+            showMessage("Debes de rellenar todos los campos");
+        }else{
+            try{
+                DAO.insertRecambio(nombre, precio, tipo);
+                showInfo("Recambio creado con exito");
+                dispose();
+                
+            } catch(Exception e){}
         }
+
     }//GEN-LAST:event_insertButtonRecambioActionPerformed
 
     private void mostrarMenuContextual(Component componente, int x, int y) {
