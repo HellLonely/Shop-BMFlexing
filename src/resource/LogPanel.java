@@ -59,7 +59,7 @@ public class LogPanel extends javax.swing.JFrame {
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
-           id = DAO.conseguirIdCliente(usernameIntroducido, passwordIntroducido);
+           id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
            
        }
         

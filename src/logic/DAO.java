@@ -24,10 +24,6 @@ public class DAO {
     
     public static boolean dataBaseTestConection (){
         boolean connection = false;
-        
-        
-        
-        
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);) {
             
@@ -297,7 +293,7 @@ public class DAO {
         }
     }
     
-    public static int conseguirIdCliente(String nombreCliente, String constraseña){
+    public static int getIdCliente(String nombreCliente, String constraseña){
         String query = "select UsId from usuario where UsNombre = '"+nombreCliente+"';";
         int id=0;
         try (Connection conexion = DriverManager.getConnection(
