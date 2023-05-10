@@ -282,7 +282,11 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
             showMessage("Debes inserta una id");
         }else{
             int adminId = Integer.parseInt(idAdmin);
-            DAO.deleteAdmin(adminId);
+            try{
+                DAO.deleteAdmin(adminId);
+            }catch(Exception e ){
+                showMessage("Id no valida");
+            }
             showInfo("Administrador eliminado con exito");
             insertAdminsinTable();
         
