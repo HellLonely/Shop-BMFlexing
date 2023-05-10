@@ -28,6 +28,7 @@ public class LogPanel extends javax.swing.JFrame {
         comprobarSistema();
     }
     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +55,7 @@ public class LogPanel extends javax.swing.JFrame {
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
+           int id=DAO.conseguirIdCliente(passwordIntroducido, passwordIntroducido);
        }
         
         return confirmacionUsername;
@@ -240,6 +242,7 @@ public class LogPanel extends javax.swing.JFrame {
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
             MainPanel mainselect = new MainPanel();
+            mainselect.setUserId(2);
             System.out.println(name);
             mainselect.setUsername(name);
             mainselect.setBoolean(false);

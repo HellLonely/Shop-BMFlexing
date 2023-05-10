@@ -18,6 +18,7 @@ public class adminToolsFacturas extends javax.swing.JFrame {
      */
     public adminToolsFacturas() {
         initComponents();
+        rellenarTabla();
     }
     
     private void rellenarTabla(){

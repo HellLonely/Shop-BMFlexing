@@ -18,6 +18,7 @@ public class MainPanel extends javax.swing.JFrame {
      */
     
     private String username;
+    private int userID;
     private boolean admin = false;
 
     public void setUsername(String username) {
@@ -26,6 +27,10 @@ public class MainPanel extends javax.swing.JFrame {
         
         changeProfileImg(username);
         
+    }
+    
+    public void setUserId(int id){
+        this.userID = id;
     }
     
     public void setBoolean(boolean admin){

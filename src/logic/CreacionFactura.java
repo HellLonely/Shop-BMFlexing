@@ -9,16 +9,15 @@ package logic;
  * @author a22ricardova
  */
 public class CreacionFactura {
-    private int precioInicial;
     private int precioTotal;
     private int idCliente;
     private int idEmpleado;
     private String tipo;
 
     public CreacionFactura(int precioInicial, String tipo) {
-        this.precioInicial = precioInicial;
         this.tipo = tipo;
         this.precioTotal=0;
+        this.idEmpleado=2;
     }
 
     public int getPrecioTotal() {

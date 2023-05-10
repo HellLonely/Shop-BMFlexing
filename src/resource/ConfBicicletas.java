@@ -22,8 +22,55 @@ public class ConfBicicletas extends javax.swing.JFrame {
      */
     public ConfBicicletas() {
         initComponents();
+        allComboBox();
+        CreacionFactura generacion=crearFactura();
     }
-
+    
+    private void allComboBox(){
+        rellenarCuadroComboBox();
+        rellenarRuedasComboBox();
+        rellenarFrenosComboBox();
+        rellenarShockComboBox();
+        rellenarHorquillaComboBox();
+    
+    }
+    
+    private void rellenarCuadroComboBox(){
+        String[] array = DAO.piezasCuadro();
+        for (int i = 0; i<array.length;i++){
+            Cuadro.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarRuedasComboBox(){
+        String[] array = DAO.piezasRuedas();
+        for (int i = 0; i<array.length;i++){
+            Ruedas.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarFrenosComboBox(){
+        String[] array = DAO.piezasFrenos();
+        for (int i = 0; i<array.length;i++){
+            Frenos.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarShockComboBox(){
+        String[] array = DAO.piezasShock();
+        for (int i = 0; i<array.length;i++){
+            Shock.addItem(array[i]);
+        }
+    }
+    
+    private void rellenarHorquillaComboBox(){
+        String[] array = DAO.piezasHorquilla();
+        for (int i = 0; i<array.length;i++){
+            Horquilla.addItem(array[i]);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +97,8 @@ public class ConfBicicletas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         PrecioFinal = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        comprar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,35 +133,35 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Cuadro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         Cuadro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CuadroActionPerformed(evt);
             }
         });
 
-        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Ruedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Ruedas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RuedasActionPerformed(evt);
             }
         });
 
-        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Horquilla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         Horquilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HorquillaActionPerformed(evt);
             }
         });
 
-        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Frenos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Frenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FrenosActionPerformed(evt);
             }
         });
 
-        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Shock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         Shock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShockActionPerformed(evt);
@@ -144,10 +192,10 @@ public class ConfBicicletas extends javax.swing.JFrame {
 
         jLabel9.setText("€");
 
-        jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comprar.setText("Comprar");
+        comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comprarActionPerformed(evt);
             }
         });
 
@@ -159,7 +207,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(comprar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,9 +228,16 @@ public class ConfBicicletas extends javax.swing.JFrame {
                     .addComponent(PrecioFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(comprar)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        jButton2.setText("Atras");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,27 +246,30 @@ public class ConfBicicletas extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Cuadro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(Ruedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Horquilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(Shock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Cuadro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(Ruedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Horquilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(Shock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton2))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Frenos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,8 +299,10 @@ public class ConfBicicletas extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(Ruedas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(20, 20, 20))
         );
 
@@ -261,9 +321,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_CuadroActionPerformed
 
@@ -278,16 +336,18 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock); 
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_RuedasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
+        CreacionFactura factura=crearFactura();
+        String transformar= PrecioFinal.getText();
+        int precioBici= Integer.parseInt(transformar);
+        factura.setPrecioTotal(precioBici);
+        
+    }//GEN-LAST:event_comprarActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
         String nombreCuadro;
@@ -301,9 +361,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_HorquillaActionPerformed
 
@@ -319,9 +377,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_FrenosActionPerformed
 
@@ -338,15 +394,18 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreShock= (String) Shock.getSelectedItem();
         System.out.println(nombreShock);
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_ShockActionPerformed
 
     private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PrecioFinalActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,7 +454,8 @@ public class ConfBicicletas extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioFinal;
     private javax.swing.JComboBox<String> Ruedas;
     private javax.swing.JComboBox<String> Shock;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton comprar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
