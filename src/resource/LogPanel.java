@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
@@ -39,6 +41,8 @@ public class LogPanel extends javax.swing.JFrame {
     
     /* Nuestros metodos internos */
     
+    private int id;
+     
     private void comprobarSistema(){
         if (DAO.dataBaseTestConection () == false){
             showMessage("No se a podido acceder a la base de datos");
@@ -55,7 +59,8 @@ public class LogPanel extends javax.swing.JFrame {
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
-           int id=DAO.conseguirIdCliente(passwordIntroducido, passwordIntroducido);
+           id = DAO.conseguirIdCliente(usernameIntroducido, passwordIntroducido);
+           
        }
         
         return confirmacionUsername;
@@ -238,6 +243,8 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(true);
             mainselect.setVisible(true);
+            mainselect.setUserId(id);
+            
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
             MainPanel mainselect = new MainPanel();
@@ -246,6 +253,9 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(false);
             mainselect.setVisible(true);
+            mainselect.setUserId(id);
+            
+            
         }
         else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");

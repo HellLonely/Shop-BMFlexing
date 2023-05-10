@@ -1,0 +1,3 @@
+Hora:10:24:02 
+Modulo:adminINsertRecambio 
+Instruccion:Error al insertar una tabla en recambio 

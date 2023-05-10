@@ -298,7 +298,7 @@ public class DAO {
     }
     
     public static int conseguirIdCliente(String nombreCliente, String constraseña){
-        String query = "select UsId from recambios where UsNombre = '"+nombreCliente+"';";
+        String query = "select UsId from usuario where UsNombre = '"+nombreCliente+"';";
         int id=0;
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);

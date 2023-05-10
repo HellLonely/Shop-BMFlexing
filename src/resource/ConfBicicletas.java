@@ -26,6 +26,12 @@ public class ConfBicicletas extends javax.swing.JFrame {
         CreacionFactura generacion=crearFactura();
     }
     
+    private int UserId;
+    
+    public void setUserId(int id){
+        this.UserId = id;
+    }
+    
     private void allComboBox(){
         rellenarCuadroComboBox();
         rellenarRuedasComboBox();
@@ -404,6 +410,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
