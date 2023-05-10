@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Ejercicios">
+<<<<<<< HEAD
             <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/adminToolsJFrames/adminTabManageMenu.java</file>
             <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/resource/AdminPanel.java</file>
             <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/adminToolsJFrames/adminToolsFacturas.java</file>
@@ -12,6 +13,11 @@
             <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/logic/CreacionFactura.java</file>
             <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/logic/DAO.java</file>
             <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/resource/ConfBicicletas.java</file>
+=======
+            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/resource/NewUserPanel.java</file>
+            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/logic/DAO.java</file>
+            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/resource/ConfBicicletas.java</file>
+>>>>>>> ab7b3537a0597b64077bccf6a7eeb30c6b603162
         </group>
     </open-files>
 </project-private>

@@ -6,6 +6,10 @@ package adminToolsJFrames;
 
 import javax.swing.table.DefaultTableModel;
 import logic.DAO;
+import java.awt.Component;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,7 +47,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         
         String[][] dato = DAO.getUsuariosDatos();
         
-        
+    
         
         for (int i =0; i<dato.length;i++){
             String [] input = new String[4];
@@ -53,8 +57,17 @@ public class adminTabManageMenu extends javax.swing.JFrame {
             }
              model.addRow(input);
         }
-        
-        
+ 
+    }
+
+    private void showMessage(String text){
+        JOptionPane.showMessageDialog(this, text,
+                "AVISO", JOptionPane.WARNING_MESSAGE);
+    }
+
+    private void showInfo(String text){
+        JOptionPane.showMessageDialog(this, text,
+                "AVISO", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -67,6 +80,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         insertRecambioPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -136,7 +150,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
             }
         });
 
-        comboRecambios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboRecambios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Tipo de pieza:");
@@ -198,7 +212,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                     .addComponent(insertButtonRecambio))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Recambios", insertRecambioPanel);
@@ -298,7 +312,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addComponent(jButton3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -316,7 +330,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
         pack();
@@ -332,14 +346,56 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         String precio = precioRecambioInput.getText();
         String tipo = (String) comboRecambios.getSelectedItem();
 
-        try{
-            DAO.insertRecambio(nombre, precio, tipo);
-            dispose();
-        } catch(Exception e){
-
+        if(nombre.isEmpty() || precio.isEmpty() || tipo.isEmpty()){
+            showMessage("Debes de rellenar todos los campos");
+        }else{
+            try{
+                DAO.insertRecambio(nombre, precio, tipo);
+                showInfo("Recambio creado con exito");
+                dispose();
+                
+            } catch(Exception e){}
         }
+
     }//GEN-LAST:event_insertButtonRecambioActionPerformed
 
+    private void mostrarMenuContextual(Component componente, int x, int y) {
+        JMenuItem jMenuItem1 = new javax.swing.JMenuItem();
+        JMenuItem jMenuItem2 = new javax.swing.JMenuItem();
+        
+        jMenuItem1.setText("Uno");
+        jPopupMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Dos");
+        jPopupMenu2.add(jMenuItem2);
+        
+        jPopupMenu2.show(componente, x, y);
+    }
+    
+    private void tablaMouseReleased(java.awt.event.MouseEvent evt) {                                    
+        System.out.println("Detectado evento 3");
+        //popup.show(evt.getComponent(), evt.getX(), evt.getY());
+        if (evt.isPopupTrigger()) {
+            mostrarMenuContextual(evt.getComponent(), evt.getX(), evt.getY());
+            System.out.println("Release");
+        }
+    }
+    
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+      // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+    
+    private void tablaMousePressed(java.awt.event.MouseEvent evt) {
+        if (evt.isPopupTrigger()) {
+            mostrarMenuContextual(evt.getComponent(), evt.getX(), evt.getY());
+            System.out.println("Release");
+        }
+    }
+
+
+                                   
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -417,6 +473,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;

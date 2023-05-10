@@ -93,5 +93,3 @@ try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, pas
 
 Si la conexion es posible se ejecuta el contenido si no
 devuelve el mensaje de error SQL ````e.getErrorCode() ````  obtener el codigo de error ````e.getSQLState()```` y el mensaje que nos devuelve  ````e.getMessage()```` .
-
-
