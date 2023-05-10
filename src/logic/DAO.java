@@ -282,6 +282,41 @@ public class DAO {
 
         return array;
     }
+    
+    public static void insertarFactura(int importe, int idCliente, int idEmpleado, String tipo){
+        String query = "insert into factura (FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo) values ('"+importe+"','"+idCliente+"','"+idEmpleado+"','"+"Bicicleta personal"+"','"+tipo+"')";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+    }
+    
+    public static int conseguirIdCliente(String nombreCliente, String constraseña){
+        String query = "select UsId from recambios where UsNombre = '"+nombreCliente+"';";
+        int id=0;
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet retorno=ps.executeQuery(query);
+                while (retorno.next()){
+                    id=retorno.getInt(1);
+                }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+        return id;
+    }
+    
+    
     public static String[] piezasCuadro(){
         
         int piezas = 0;

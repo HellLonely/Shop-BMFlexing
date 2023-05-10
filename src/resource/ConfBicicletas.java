@@ -23,6 +23,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
     public ConfBicicletas() {
         initComponents();
         allComboBox();
+        CreacionFactura generacion=crearFactura();
     }
     
     private void allComboBox(){
@@ -96,7 +97,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         PrecioFinal = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        comprar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,10 +192,10 @@ public class ConfBicicletas extends javax.swing.JFrame {
 
         jLabel9.setText("€");
 
-        jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comprar.setText("Comprar");
+        comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comprarActionPerformed(evt);
             }
         });
 
@@ -206,7 +207,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(comprar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +228,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
                     .addComponent(PrecioFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(comprar)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -320,9 +321,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_CuadroActionPerformed
 
@@ -337,16 +336,18 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock); 
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_RuedasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
+        CreacionFactura factura=crearFactura();
+        String transformar= PrecioFinal.getText();
+        int precioBici= Integer.parseInt(transformar);
+        factura.setPrecioTotal(precioBici);
+        
+    }//GEN-LAST:event_comprarActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
         String nombreCuadro;
@@ -360,9 +361,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_HorquillaActionPerformed
 
@@ -378,9 +377,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
     }//GEN-LAST:event_FrenosActionPerformed
 
@@ -395,16 +392,10 @@ public class ConfBicicletas extends javax.swing.JFrame {
         nombreFrenos= (String) Frenos.getSelectedItem();
         String nombreShock;
         nombreShock= (String) Shock.getSelectedItem();
-
         System.out.println(nombreShock);
-        /*int precioShock= DAO.actualizarPrecios();*/
-
         int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        CreacionFactura generacion=crearFactura();
-        generacion.setPrecioTotal(nuevoPrecio); 
-        String setPrecio= Integer.toString(generacion.getPrecioTotal());
+        String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
-
     }//GEN-LAST:event_ShockActionPerformed
 
     private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed
@@ -463,7 +454,7 @@ public class ConfBicicletas extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioFinal;
     private javax.swing.JComboBox<String> Ruedas;
     private javax.swing.JComboBox<String> Shock;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton comprar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
