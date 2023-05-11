@@ -9,6 +9,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -17,6 +18,7 @@ import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
 import logic.passwordManager;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -28,7 +30,7 @@ public class LogPanel extends javax.swing.JFrame {
     /**
      * Creates new form LogPanel
      */
-    public LogPanel() {
+    public LogPanel() throws IOException, FileNotFoundException, ParseException {
         initComponents();
         comprobarSistema();
     }
@@ -46,7 +48,7 @@ public class LogPanel extends javax.swing.JFrame {
     
     private int id;
      
-    private void comprobarSistema(){
+    private void comprobarSistema() throws IOException, FileNotFoundException, ParseException{
         if (DAO.dataBaseTestConection () == false){
             showMessage("No se a podido acceder a la base de datos");
             logSystem.crearLog("DAO -s","Error al conectar con la base de datos. -s");
@@ -265,6 +267,10 @@ public class LogPanel extends javax.swing.JFrame {
                 System.out.println("Hecho");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(comprobarInputUsername() == true){
@@ -277,8 +283,7 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setVisible(true);
             mainselect.setUserId(idCliente());
             System.out.println("ID LOG "+ idCliente());
-            
-            
+
         }
         else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");
@@ -325,7 +330,13 @@ public class LogPanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogPanel().setVisible(true);
+                try {
+                    new LogPanel().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
