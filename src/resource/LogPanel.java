@@ -9,6 +9,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -17,6 +18,7 @@ import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
 import logic.passwordManager;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -265,6 +267,10 @@ public class LogPanel extends javax.swing.JFrame {
                 System.out.println("Hecho");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(comprobarInputUsername() == true){
@@ -277,8 +283,7 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setVisible(true);
             mainselect.setUserId(idCliente());
             System.out.println("ID LOG "+ idCliente());
-            
-            
+
         }
         else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");

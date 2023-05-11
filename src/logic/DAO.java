@@ -2,6 +2,8 @@
 
 package logic;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,17 +14,31 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import static logic.logSystem.jsonLecturaPrueba;
+import org.json.simple.parser.ParseException;
 
 
 public class DAO {   
     
     /* Datos de SQL Conexion */
-        
-        private static String conectionIp = "jdbc:mysql://192.168.109.21:3306/bicicletas";
-        private static String userSQL = "usuario1";
-        private static String passwordSQL = "usuario1";
     
-    public static boolean dataBaseTestConection (){
+    private static String conectionIp;
+    private static String userSQL;
+    private static String passwordSQL;
+    
+    
+    
+    public static void datos() throws IOException, FileNotFoundException, ParseException{
+        String array[] = new String[3];
+        array = logSystem.jsonLecturaPrueba();
+        conectionIp = array[0];
+        userSQL = array[1];
+        passwordSQL = array[2];
+        
+    }
+
+    public static boolean dataBaseTestConection () throws IOException, FileNotFoundException, ParseException{
+        datos();
         boolean connection = false;
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);) {

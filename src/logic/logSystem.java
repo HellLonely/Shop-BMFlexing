@@ -14,6 +14,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 
 
@@ -58,7 +61,7 @@ public class logSystem {
         }
     }
     
-    public static void jsonPrueba() throws FileNotFoundException{
+    public static void jsonPrueba() throws FileNotFoundException, IOException, ParseException{
         // creating JSONObject
         JSONObject jo = new JSONObject();
           
@@ -103,7 +106,31 @@ public class logSystem {
           
         pw.flush();
         pw.close();
+        jsonLecturaPrueba();
     }
     
-    
+    public static String[] jsonLecturaPrueba() throws FileNotFoundException, IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        
+        String arrayDatos[] = new String [3];
+        
+        JSONArray a = (JSONArray) parser.parse(new FileReader("src/logic/config.json"));
+        for (Object o : a)
+        {
+          JSONObject object = (JSONObject) o;
+
+          String jdbc = (String) object.get("jdbc");
+          arrayDatos[0] = jdbc;
+
+          String user = (String) object.get("user");
+          arrayDatos[1] = user;
+
+
+          String passwd = (String) object.get("password");
+          arrayDatos[2] = passwd;
+        }
+        
+        return arrayDatos;
+    }  
+   
 }
