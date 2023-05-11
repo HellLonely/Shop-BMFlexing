@@ -23,10 +23,11 @@ public class ConfBicicletas extends javax.swing.JFrame {
     public ConfBicicletas() {
         initComponents();
         allComboBox();
-        CreacionFactura generacion=crearFactura();
+        factura=crearFactura();
     }
     
     private int UserId;
+    private CreacionFactura factura;
     
     public void setUserId(int id){
         this.UserId = id;
@@ -348,11 +349,11 @@ public class ConfBicicletas extends javax.swing.JFrame {
     }//GEN-LAST:event_RuedasActionPerformed
 
     private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
-        CreacionFactura factura=crearFactura();
         String transformar= PrecioFinal.getText();
         int precioBici= Integer.parseInt(transformar);
         factura.setPrecioTotal(precioBici);
-        
+        factura.setIdCliente(UserId);
+        DAO.insertarFactura(factura.getPrecioTotal(), factura.getIdCliente(), factura.getIdEmpleado(), factura.getTipo());
     }//GEN-LAST:event_comprarActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed

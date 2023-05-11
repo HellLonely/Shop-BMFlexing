@@ -2,22 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group name="Ejercicios">
-            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/resource/LogPanel.java</file>
             <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/adminToolsJFrames/adminTabManageMenu.java</file>
             <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/resource/AdminPanel.java</file>
-            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/logic/DAO.java</file>
-            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/adminToolsJFrames/adminToolsAdminPromote.java</file>
-=======
+            <file>file:/Z:/Yeison%20González/Proyecto%20Final/Shop-BMFlexing/src/adminToolsJFrames/adminToolsFacturas.java</file>
+        </group>
         <group>
-            <file>file:/G:/Shop-BMFlexing/src/logs/log-1495008501.txt</file>
-            <file>file:/G:/Shop-BMFlexing/src/resource/AdminPanel.java</file>
-            <file>file:/G:/Shop-BMFlexing/src/logic/DAO.java</file>
-            <file>file:/G:/Shop-BMFlexing/src/adminToolsJFrames/adminToolsModifyRecambios.java</file>
-            <file>file:/G:/Shop-BMFlexing/src/adminToolsJFrames/adminToolsAdminPromote.java</file>
-            <file>file:/G:/Shop-BMFlexing/src/adminToolsJFrames/adminTabManageMenu.java</file>
->>>>>>> 7477c2007a5be0d4ac490e76362f4660c60867a0
+            <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/resource/LogPanel.java</file>
+            <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/logic/CreacionFactura.java</file>
+            <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/logic/DAO.java</file>
+            <file>file:/C:/Users/a22ricardova/Desktop/bmflexing/Shop-BMFlexing/src/resource/ConfBicicletas.java</file>
         </group>
     </open-files>
 </project-private>
