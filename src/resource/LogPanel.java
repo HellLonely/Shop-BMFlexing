@@ -72,6 +72,13 @@ public class LogPanel extends javax.swing.JFrame {
         return confirmacionUsername;
     }
     
+    private int idCliente(){
+        String usernameIntroducido = usernameInput.getText();
+        String passwordIntroducido = passwordInput.getText();
+        id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
+        return id;
+    }
+    
     private boolean comprobarAdministrador(){
         boolean confirmacionUsername = false;
         String usernameIntroducido = usernameInput.getText();
@@ -251,7 +258,8 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(true);
             mainselect.setVisible(true);
-            mainselect.setUserId(id);
+            
+            mainselect.setUserId(idCliente());
             try {
                 logSystem.jsonPrueba();
                 System.out.println("Hecho");
@@ -267,7 +275,8 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(false);
             mainselect.setVisible(true);
-            mainselect.setUserId(id);
+            mainselect.setUserId(idCliente());
+            System.out.println("ID LOG "+ idCliente());
             
             
         }

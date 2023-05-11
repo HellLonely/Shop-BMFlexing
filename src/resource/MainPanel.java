@@ -308,6 +308,7 @@ public class MainPanel extends javax.swing.JFrame {
         ConfBicicletas menuConfBicicletas= new ConfBicicletas();
         menuConfBicicletas.setVisible(true);
         menuConfBicicletas.setUserId(userID);
+        System.out.println("ID MAIN"+ userID);
        
     }//GEN-LAST:event_CreaTuBiciActionPerformed
 

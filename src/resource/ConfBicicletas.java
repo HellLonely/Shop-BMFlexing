@@ -353,7 +353,8 @@ public class ConfBicicletas extends javax.swing.JFrame {
         int precioBici= Integer.parseInt(transformar);
         factura.setPrecioTotal(precioBici);
         factura.setIdCliente(UserId);
-        DAO.insertarFactura(factura.getPrecioTotal(), factura.getIdCliente(), factura.getIdEmpleado(), factura.getTipo());
+        System.out.println("ID CLIENTE" + UserId);
+        DAO.insertarFactura(factura.getPrecioTotal(), UserId, factura.getIdEmpleado(), factura.getTipo());
     }//GEN-LAST:event_comprarActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
