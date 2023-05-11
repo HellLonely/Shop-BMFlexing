@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
-import static logic.logSystem.jsonLecturaPrueba;
 import org.json.simple.parser.ParseException;
+import static logic.logSystem.jsonLecturaConnectionData;
 
 
 public class DAO {   
@@ -30,7 +30,7 @@ public class DAO {
     
     public static void datos() throws IOException, FileNotFoundException, ParseException{
         String array[] = new String[3];
-        array = logSystem.jsonLecturaPrueba();
+        array = logSystem.jsonLecturaConnectionData();
         conectionIp = array[0];
         userSQL = array[1];
         passwordSQL = array[2];

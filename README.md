@@ -85,6 +85,14 @@ Aqui el link para obtener esta libreria - <a href="https://downloads.mysql.com/a
 
 La librería **JSON Simple** nos añade la funcionalidad leer y escribir ficheros JSON.
 
+Un apunte que puede ser útil es que todos los metodos en los que usemos la librería necesitarán tener control de excepciones en su declaración.
+
+>Ejemplo: Metodo para leer los datos del archivo config.json
+
+```java
+public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {...}
+```
+
 Aqui el link para obtener esta libreria - <a href="http://www.java2s.com/Code/Jar/j/Downloadjsonsimple11jar.htm#google_vignette">Link</a>
 
 

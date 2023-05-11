@@ -106,10 +106,10 @@ public class logSystem {
           
         pw.flush();
         pw.close();
-        jsonLecturaPrueba();
+        jsonLecturaConnectionData();
     }
     
-    public static String[] jsonLecturaPrueba() throws FileNotFoundException, IOException, ParseException {
+    public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {
         JSONParser parser = new JSONParser();
         
         String arrayDatos[] = new String [3];
