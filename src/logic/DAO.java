@@ -18,16 +18,12 @@ public class DAO {
     
     /* Datos de SQL Conexion */
         
-        private static String conectionIp = "jdbc:mysql://localhost:3306/bicicletas";
-        private static String userSQL = "root";
-        private static String passwordSQL = "";
+        private static String conectionIp = "jdbc:mysql://192.168.109.21:3306/bicicletas";
+        private static String userSQL = "usuario1";
+        private static String passwordSQL = "usuario1";
     
     public static boolean dataBaseTestConection (){
         boolean connection = false;
-        
-        
-        
-        
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);) {
             
@@ -297,7 +293,7 @@ public class DAO {
         }
     }
     
-    public static int conseguirIdCliente(String nombreCliente, String constraseña){
+    public static int getIdCliente(String nombreCliente, String constraseña){
         String query = "select UsId from usuario where UsNombre = '"+nombreCliente+"';";
         int id=0;
         try (Connection conexion = DriverManager.getConnection(
@@ -557,7 +553,7 @@ public class DAO {
         return array;
     }
     
-     public static String[][] getAdmins(){
+    public static String[][] getAdmins(){
         
         int numAdmins = 0;
         
@@ -593,17 +589,6 @@ public class DAO {
                 array[i][1] = resultado.getString(2);
                 array[i][2] = resultado.getString(3);
                 
-
-                
-                /*
-                for (int j = 0; j < array.length ; j++){
-                    System.out.println(array[i][0]);
-                    System.out.println(array[i][1]);
-                    System.out.println(array[i][2]);
-                    System.out.println(array[i][3]);
-                }
-                */
-               
                 i++;
             }
 
@@ -669,6 +654,97 @@ public class DAO {
             logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
         }
         
+    }
+     
+    public static String[][] getAllRecambios(){
+        
+        int numRecambios = 0;
+        
+        String query = "select count(*) from recambios;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                numRecambios = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[][] array = new String[numRecambios][4];
+        
+        String sentencia = "select ReId, ReNombre,RePrecio, ReTipo from recambios;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            while(resultado.next()){
+                array[i][0] = Integer.toString(resultado.getInt(1));
+                array[i][1] = resultado.getString(2);
+                array[i][2] = Integer.toString(resultado.getInt(3));
+                array[i][3] = resultado.getString(4);
+               
+                i++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+     
+     
+     public static String[] getRecambio(int RecambioId){
+        
+        
+        String[] array = new String[4];
+        
+        String sentencia = "select ReId, ReNombre,RePrecio,ReTipo from recambios where ReId="+RecambioId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            while(resultado.next()){
+                array[0] = Integer.toString(resultado.getInt(1));
+                array[1] = resultado.getString(2);
+                array[2] = Integer.toString(resultado.getInt(3));
+                array[3] = resultado.getString(4);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+     
+     public static void updateRecambio(int RecambioId, String RecambioNombre, int RembioPrecio, String RecambioTipo){
+        String query = "update recambios set ReNombre = '"+RecambioNombre+"', RePrecio = "+RembioPrecio+", ReTipo = '"+RecambioTipo+"' where ReId = "+RecambioId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
     }
      
 }

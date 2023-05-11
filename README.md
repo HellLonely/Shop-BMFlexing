@@ -85,7 +85,7 @@ Son basicamente el usuario y la contraseña de la conexion a la base de datos.
 
 <h3>Estructura básica de los metodos </h3>
 
-Todos los metodos contiene una estructura **try, catch**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas.
+Todos los metodos contiene una estructura llamada **try-width-resources**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas. 
 
 ``` Java
 try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentenciaSQL))
@@ -93,3 +93,34 @@ try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, pas
 
 Si la conexion es posible se ejecuta el contenido si no
 devuelve el mensaje de error SQL ````e.getErrorCode() ````  obtener el codigo de error ````e.getSQLState()```` y el mensaje que nos devuelve  ````e.getMessage()```` .
+
+A lo largo de todo el proyecto se utilizan varias consultas a la base de datos. Asi que nos parece correcto hacer una pequeña lista de todos los metodos de acceso para facilitar entender el código de manera externa.
+
+
+<h3 style="margin-bottom:10px;">DAO 🐬 | Metodos usados</h3>
+
+
+|Nombre|Descripción|
+|---|---|
+|```dataBaseTestConection()``` |Comprueba que la conexion con la base de datos.|
+|```insertNewUser ()```|Inserta un nuevo usuario en la tabla usuario.
+|```loginUser()```|Comprueba el nombre de usuario y contraseña para habilitar el **login**.|
+|```loginAdmin()```|Comprueba el nombre de usuario y contraseña del usuario para loguearlo con los permisos de **Administrador**.|
+|```getAdminTipo()```|Extrae el tipo de administrador de la sesión.|
+|```insertRecambio()```|Crea un nuevo **Recambio** en la base de datos.|
+|```modeloFactura()```|Consultar a Richard|
+| ```actualizarPrecios()```|Consultar a Richard|
+|```getUsuariosDatos()```|Obtiene la información del **Usuario** para mostrarlo en la aplicación.|
+|```insertarFactura()```|Crea una nueva **Factura** en la base de datos.|
+|```getIdCliente()```|Obtiene la id del **Usuario** mediante su nombre.|
+|```piezasCuadro()```|Extrae todos los **Recambios** de tipo cuadro.|
+|```piezasRuedas()```|Extrae todos los **Recambios** de tipo ruedas.|
+|```piezasFrenos()```|Extrae todos los **Recambios** de tipo frenos.|
+|```piezasShock()```|Extrae todos los **Recambios** de tipo shock.|
+|```piezasHorquilla()```|Extrae todos los **Recambios** de tipo horquilla.|
+|```getAdmins()```|Obtiene la información de todos los **Administradores**.|
+|```deleteAdmin()```|Elimina a un **Administrador** mediante su id.|
+|```promoteUser()```|Añade a un **Usuario** a la tabla de **Administradores**.|
+|```getAllRecambios()```|Extrae la información de todos los **Recambios** mostrandolos en la aplicación.|
+|```getRecambio()```|Extrae la información de un **Recambio**.|
+|```updateRecambio()```|Modifica las informacion de un solo **Recambio**.|

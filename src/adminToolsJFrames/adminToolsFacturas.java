@@ -44,10 +44,6 @@ public class adminToolsFacturas extends javax.swing.JFrame {
             }
              model.addRow(input);
         }
-        
-        
-        
-    
 
     }
 

@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
@@ -59,7 +62,7 @@ public class LogPanel extends javax.swing.JFrame {
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
-           id = DAO.conseguirIdCliente(usernameIntroducido, passwordIntroducido);
+           id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
            
        }
         
@@ -79,6 +82,8 @@ public class LogPanel extends javax.swing.JFrame {
         
         return confirmacionUsername;
     }
+    
+   
 
 
 
@@ -244,6 +249,12 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setBoolean(true);
             mainselect.setVisible(true);
             mainselect.setUserId(id);
+            try {
+                logSystem.jsonPrueba();
+                System.out.println("Hecho");
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
