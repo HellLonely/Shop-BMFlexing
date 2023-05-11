@@ -61,6 +61,40 @@ Por el momento la unica opción para gestionar los logs de la aplicación
 se encuentra en las funcionalidades de **Admin**, que presenta un botón para
 eliminar los logs ```clearLog()```
 
+<h2> Librerias 📚</h2>
+
+En el proyecto de estamos usadando por el momento 2 librerias.
+
+
+<h3>SQL Connector</h3>
+
+Esta librería esta usa en toda la clase **DAO**, es la encargada de realizar la conexion a una base de datos.
+
+Cabe destacar que es necesario importar los métodos necesarios de la biblioteca, estos son los usados en nuestro proyecto.
+
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+```
+Aqui el link para obtener esta libreria - <a href="https://downloads.mysql.com/archives/c-j/">Link</a>
+
+<h3>JSON Simple</h3>
+
+La librería **JSON Simple** nos añade la funcionalidad leer y escribir ficheros JSON.
+
+Un apunte que puede ser útil es que todos los metodos en los que usemos la librería necesitarán tener control de excepciones en su declaración.
+
+>Ejemplo: Metodo para leer los datos del archivo config.json
+
+```java
+public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {...}
+```
+
+Aqui el link para obtener esta libreria - <a href="http://www.java2s.com/Code/Jar/j/Downloadjsonsimple11jar.htm#google_vignette">Link</a>
+
 
 <h2> DAO 🐬</h2>
 
@@ -85,7 +119,7 @@ Son basicamente el usuario y la contraseña de la conexion a la base de datos.
 
 <h3>Estructura básica de los metodos </h3>
 
-Todos los metodos contiene una estructura **try, catch**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas.
+Todos los metodos contiene una estructura llamada **try-width-resources**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas. 
 
 ``` Java
 try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentenciaSQL))

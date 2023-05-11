@@ -42,7 +42,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
                 System.out.println(dato[i][x]);
                 input[x] = dato[i][x];
             }
-             model.addRow(input);
+            model.addRow(input);
         }
 
     }

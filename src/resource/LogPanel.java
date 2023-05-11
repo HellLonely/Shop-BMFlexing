@@ -8,12 +8,17 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import logic.DAO;
 import logic.logSystem;
 import logic.passwordManager;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -25,7 +30,7 @@ public class LogPanel extends javax.swing.JFrame {
     /**
      * Creates new form LogPanel
      */
-    public LogPanel() {
+    public LogPanel() throws IOException, FileNotFoundException, ParseException {
         initComponents();
         comprobarSistema();
     }
@@ -43,7 +48,7 @@ public class LogPanel extends javax.swing.JFrame {
     
     private int id;
      
-    private void comprobarSistema(){
+    private void comprobarSistema() throws IOException, FileNotFoundException, ParseException{
         if (DAO.dataBaseTestConection () == false){
             showMessage("No se a podido acceder a la base de datos");
             logSystem.crearLog("DAO -s","Error al conectar con la base de datos. -s");
@@ -59,11 +64,21 @@ public class LogPanel extends javax.swing.JFrame {
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
+
+           int id=DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
+
            id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
            
        }
         
         return confirmacionUsername;
+    }
+    
+    private int idCliente(){
+        String usernameIntroducido = usernameInput.getText();
+        String passwordIntroducido = passwordInput.getText();
+        id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
+        return id;
     }
     
     private boolean comprobarAdministrador(){
@@ -79,6 +94,8 @@ public class LogPanel extends javax.swing.JFrame {
         
         return confirmacionUsername;
     }
+    
+   
 
 
 
@@ -243,7 +260,18 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(true);
             mainselect.setVisible(true);
-            mainselect.setUserId(id);
+            
+            mainselect.setUserId(idCliente());
+            try {
+                logSystem.jsonPrueba();
+                System.out.println("Hecho");
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
@@ -253,9 +281,9 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUsername(name);
             mainselect.setBoolean(false);
             mainselect.setVisible(true);
-            mainselect.setUserId(id);
-            
-            
+            mainselect.setUserId(idCliente());
+            System.out.println("ID LOG "+ idCliente());
+
         }
         else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");
@@ -302,7 +330,13 @@ public class LogPanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogPanel().setVisible(true);
+                try {
+                    new LogPanel().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

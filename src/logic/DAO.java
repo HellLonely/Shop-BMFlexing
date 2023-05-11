@@ -2,6 +2,8 @@
 
 package logic;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,17 +14,31 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import org.json.simple.parser.ParseException;
+import static logic.logSystem.jsonLecturaConnectionData;
 
 
 public class DAO {   
     
     /* Datos de SQL Conexion */
-        
-        private static String conectionIp = "jdbc:mysql://localhost:3306/bicicletas";
-        private static String userSQL = "root";
-        private static String passwordSQL = "$cyKnaf9";
     
-    public static boolean dataBaseTestConection (){
+    private static String conectionIp;
+    private static String userSQL;
+    private static String passwordSQL;
+    
+    
+    
+    public static void datos() throws IOException, FileNotFoundException, ParseException{
+        String array[] = new String[3];
+        array = logSystem.jsonLecturaConnectionData();
+        conectionIp = array[0];
+        userSQL = array[1];
+        passwordSQL = array[2];
+        
+    }
+
+    public static boolean dataBaseTestConection () throws IOException, FileNotFoundException, ParseException{
+        datos();
         boolean connection = false;
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);) {
@@ -280,7 +296,10 @@ public class DAO {
     }
     
     public static void insertarFactura(int importe, int idCliente, int idEmpleado, String tipo){
-        String query = "insert into factura (FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo) values ('"+importe+"','"+idCliente+"','"+idEmpleado+"','"+"Bicicleta personal"+"','"+tipo+"')";
+        
+        String query = "set SQL_SAFE_UPDATES = 0;";
+        System.out.println("ID CLIENTE" + idCliente);
+        
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
                 PreparedStatement ps = conexion.prepareStatement(query)) {
@@ -291,17 +310,33 @@ public class DAO {
                     + "\nMensaje: " + e.getMessage());
             logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
         }
+        
+        
+        String query2 = "insert into factura (FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo) values ('"+importe+"','"+idCliente+"','"+idEmpleado+"','"+"Bicicleta personal"+"','"+tipo+"')";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query2)) {
+                ps.executeUpdate(query);
+                ps.executeUpdate(query2);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
     }
     
     public static int getIdCliente(String nombreCliente, String constraseña){
+        int id = 0;
         String query = "select UsId from usuario where UsNombre = '"+nombreCliente+"';";
-        int id=0;
+        
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
                 PreparedStatement ps = conexion.prepareStatement(query)) {
                 ResultSet retorno=ps.executeQuery(query);
                 while (retorno.next()){
                     id=retorno.getInt(1);
+                    System.out.println("ID CONSULTA"+id);
                 }
         } catch (SQLException e) {
             System.out.println("Código de Error: " + e.getErrorCode()

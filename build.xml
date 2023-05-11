@@ -10,6 +10,44 @@
 <project name="BMFlexing" default="default" basedir=".">
     <description>Builds, tests, and runs the project BMFlexing.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- JSON Reader Pack-->
+    <script language="javascript">
+
+        importClass(java.io.File);
+        importClass(java.io.FileReader);
+        importClass(java.io.BufferedReader);
+        importClass(java.io.FileWriter);
+        importClass(java.io.BufferedWriter);
+
+        echo = project.createTask("echo");
+        echo.setMessage("Parsing properties");
+        echo.perform();
+
+        var file = new File("properties.json");
+        fr = new FileReader(file);
+        br = new BufferedReader(fr);
+
+        // Read the file. 
+        // This assumes the file has no line breaks and is one line.
+        var json = br.readLine();
+
+        // Evaluate the JSON.
+        var struct = eval("(" + json + ")");
+
+        // Set each property in the project environment.
+        for (i in struct) {
+            echo = project.createTask("echo");
+            echo.setMessage(i + "=" + struct[i]);
+            echo.perform();
+            project.setProperty(i,struct[i]);
+        }
+
+    </script>
+
+    <target name="example">
+        <echo>${greeting} ${audience}</echo>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
