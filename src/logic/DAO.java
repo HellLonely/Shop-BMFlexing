@@ -24,10 +24,6 @@ public class DAO {
     
     public static boolean dataBaseTestConection (){
         boolean connection = false;
-        
-        
-        
-        
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);) {
             
@@ -297,8 +293,8 @@ public class DAO {
         }
     }
     
-    public static int conseguirIdCliente(String nombreCliente, String constraseña){
-        String query = "select UsId from recambios where UsNombre = '"+nombreCliente+"';";
+    public static int getIdCliente(String nombreCliente, String constraseña){
+        String query = "select UsId from usuario where UsNombre = '"+nombreCliente+"';";
         int id=0;
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
@@ -557,4 +553,198 @@ public class DAO {
         return array;
     }
     
+    public static String[][] getAdmins(){
+        
+        int numAdmins = 0;
+        
+        String query = "select count(*) from administrador;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                numAdmins = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[][] array = new String[numAdmins][3];
+        
+        String sentencia = "select AdId, AdNombre, AdTipo from administrador;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            System.out.println("Facturas "+ numAdmins);
+            while(resultado.next()){
+                array[i][0] = Integer.toString(resultado.getInt(1));
+                array[i][1] = resultado.getString(2);
+                array[i][2] = resultado.getString(3);
+                
+                i++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+     
+     public static void deleteAdmin(int Admin){
+        String query = "delete from administrador where AdId = "+ Admin+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+    }
+     
+     
+     public static void promoteUser(int UserId){
+        String[] array = new String[2];
+        
+        String sentencia = "select UsNombre, UsContraseña from usuario where UsId = "+UserId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+
+            while(resultado.next()){
+                array[0] = resultado.getString(1);
+                array[1] = resultado.getString(2);
+                
+                System.out.println(array[0]);
+                System.out.println(array[1]);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+        
+        String query = "insert into administrador (AdNombre,AdTipo,AdFechaEntrada,AdContraseña) values ('"+array[0]+"','empleado',now(),'"+array[1]+"');";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+        
+    }
+     
+    public static String[][] getAllRecambios(){
+        
+        int numRecambios = 0;
+        
+        String query = "select count(*) from recambios;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet resultado = ps.executeQuery(query);
+            while(resultado.next()){
+                numRecambios = resultado.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+           
+        }
+        
+        String[][] array = new String[numRecambios][4];
+        
+        String sentencia = "select ReId, ReNombre,RePrecio, ReTipo from recambios;";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            
+            int i = 0;
+            while(resultado.next()){
+                array[i][0] = Integer.toString(resultado.getInt(1));
+                array[i][1] = resultado.getString(2);
+                array[i][2] = Integer.toString(resultado.getInt(3));
+                array[i][3] = resultado.getString(4);
+               
+                i++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+     
+     
+     public static String[] getRecambio(int RecambioId){
+        
+        
+        String[] array = new String[4];
+        
+        String sentencia = "select ReId, ReNombre,RePrecio,ReTipo from recambios where ReId="+RecambioId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            while(resultado.next()){
+                array[0] = Integer.toString(resultado.getInt(1));
+                array[1] = resultado.getString(2);
+                array[2] = Integer.toString(resultado.getInt(3));
+                array[3] = resultado.getString(4);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+
+        return array;
+    }
+     
+     public static void updateRecambio(int RecambioId, String RecambioNombre, int RembioPrecio, String RecambioTipo){
+        String query = "update recambios set ReNombre = '"+RecambioNombre+"', RePrecio = "+RembioPrecio+", ReTipo = '"+RecambioTipo+"' where ReId = "+RecambioId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+    }
+     
 }

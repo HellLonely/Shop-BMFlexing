@@ -7,7 +7,9 @@ package resource;
 import javax.swing.JOptionPane;
 
 import adminToolsJFrames.adminTabManageMenu;
+import adminToolsJFrames.adminToolsAdminPromote;
 import adminToolsJFrames.adminToolsFacturas;
+import adminToolsJFrames.adminToolsModifyRecambios;
 import logic.DAO;
 import logic.logSystem;
 
@@ -72,6 +74,8 @@ public class AdminPanel extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        modificarRecambio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,6 +160,20 @@ public class AdminPanel extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Gestor Admin");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        modificarRecambio.setText("Modificar Recambio");
+        modificarRecambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarRecambioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout adminPanelJLayout = new javax.swing.GroupLayout(adminPanelJ);
         adminPanelJ.setLayout(adminPanelJLayout);
         adminPanelJLayout.setHorizontalGroup(
@@ -163,26 +181,38 @@ public class AdminPanel extends javax.swing.JFrame {
             .addGroup(adminPanelJLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(591, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelJLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(31, 31, 31))
+                .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(adminPanelJLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(31, 31, 31))
+                    .addGroup(adminPanelJLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(modificarRecambio)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         adminPanelJLayout.setVerticalGroup(
             adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminPanelJLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(modificarRecambio))
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
                 .addGap(28, 28, 28)
                 .addComponent(jButton3)
-                .addGap(44, 44, 44)
-                .addComponent(jButton4)
+                .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(adminPanelJLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jButton4))
+                    .addGroup(adminPanelJLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton5)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -213,6 +243,18 @@ public class AdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        adminToolsAdminPromote adminPromote = new adminToolsAdminPromote();
+        adminPromote.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void modificarRecambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRecambioActionPerformed
+        // TODO add your handling code here:
+        adminToolsModifyRecambios recambiosModify = new adminToolsModifyRecambios();
+        recambiosModify.setVisible(true);
+    }//GEN-LAST:event_modificarRecambioActionPerformed
 
     
 
@@ -259,8 +301,10 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarRecambio;
     private javax.swing.JLabel usernameAdmin;
     // End of variables declaration//GEN-END:variables
 }

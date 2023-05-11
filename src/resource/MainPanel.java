@@ -31,6 +31,7 @@ public class MainPanel extends javax.swing.JFrame {
     
     public void setUserId(int id){
         this.userID = id;
+        
     }
     
     public void setBoolean(boolean admin){
@@ -306,6 +307,8 @@ public class MainPanel extends javax.swing.JFrame {
     private void CreaTuBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreaTuBiciActionPerformed
         ConfBicicletas menuConfBicicletas= new ConfBicicletas();
         menuConfBicicletas.setVisible(true);
+        menuConfBicicletas.setUserId(userID);
+       
     }//GEN-LAST:event_CreaTuBiciActionPerformed
 
     /**
