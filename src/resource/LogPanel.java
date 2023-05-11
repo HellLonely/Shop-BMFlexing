@@ -30,7 +30,7 @@ public class LogPanel extends javax.swing.JFrame {
     /**
      * Creates new form LogPanel
      */
-    public LogPanel() {
+    public LogPanel() throws IOException, FileNotFoundException, ParseException {
         initComponents();
         comprobarSistema();
     }
@@ -48,7 +48,7 @@ public class LogPanel extends javax.swing.JFrame {
     
     private int id;
      
-    private void comprobarSistema(){
+    private void comprobarSistema() throws IOException, FileNotFoundException, ParseException{
         if (DAO.dataBaseTestConection () == false){
             showMessage("No se a podido acceder a la base de datos");
             logSystem.crearLog("DAO -s","Error al conectar con la base de datos. -s");
@@ -330,7 +330,13 @@ public class LogPanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogPanel().setVisible(true);
+                try {
+                    new LogPanel().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
