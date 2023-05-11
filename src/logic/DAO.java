@@ -778,7 +778,21 @@ public class DAO {
             System.out.println("Código de Error: " + e.getErrorCode()
                     + "\nSLQState: " + e.getSQLState()
                     + "\nMensaje: " + e.getMessage());
-            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+            logSystem.crearLog("adminINsertRecambio -s", "Error al actualizar una tabla en recambio -s");
+        }
+    }
+     
+    public static void deleteRecambio(int RecambioId){
+        String query = "delete from recambios where ReId = "+RecambioId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al eliminar una tabla en recambio -s");
         }
     }
      

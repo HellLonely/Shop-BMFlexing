@@ -7,6 +7,7 @@ package adminToolsJFrames;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logic.DAO;
+import logic.logSystem;
 
 /**
  *
@@ -57,6 +58,13 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
                 "AVISO", JOptionPane.INFORMATION_MESSAGE);
     }
     
+    private void showAdvertismentDelete(int RecambioID){
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Quieres este recambio?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(respuesta == JOptionPane.YES_OPTION){
+            DAO.deleteRecambio(RecambioID);
+        }
+    }
+    
     private void initTipoRecambios(){
         String[] metodos = {"ruedas", "shock", "horquilla", "cuadro", "frenos"};
         for (String metodo : metodos){
@@ -89,6 +97,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         modifyRecambio = new javax.swing.JButton();
         dataLoad = new javax.swing.JButton();
+        recambioDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +181,13 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
             }
         });
 
+        recambioDelete.setText("Eliminar");
+        recambioDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recambioDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -198,7 +214,9 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(comboRecambios, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
-                                .addComponent(modifyRecambio)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(recambioDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modifyRecambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(0, 159, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -221,7 +239,9 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
                     .addComponent(comboRecambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(recambioNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(modifyRecambio))
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(recambioDelete)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,6 +341,13 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         comboRecambios.setSelectedIndex(selectItem);
     }//GEN-LAST:event_dataLoadActionPerformed
 
+    private void recambioDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recambioDeleteActionPerformed
+        // TODO add your handling code here:
+        int RecambioID = Integer.parseInt(RecambioId.getText());
+        showAdvertismentDelete(RecambioID);
+        rellenarTabla();
+    }//GEN-LAST:event_recambioDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -371,6 +398,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton modifyRecambio;
+    private javax.swing.JButton recambioDelete;
     private javax.swing.JTextField recambioDinero;
     private javax.swing.JTextField recambioNombre1;
     // End of variables declaration//GEN-END:variables
