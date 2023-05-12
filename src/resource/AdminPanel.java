@@ -8,10 +8,15 @@ import javax.swing.JOptionPane;
 
 import adminToolsJFrames.adminTabManageMenu;
 import adminToolsJFrames.adminToolsAdminPromote;
+import adminToolsJFrames.adminToolsBDChange;
 import adminToolsJFrames.adminToolsFacturas;
 import adminToolsJFrames.adminToolsModifyRecambios;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logic.DAO;
 import logic.logSystem;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -76,6 +81,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         modificarRecambio = new javax.swing.JButton();
+        bdConnector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,6 +180,13 @@ public class AdminPanel extends javax.swing.JFrame {
             }
         });
 
+        bdConnector.setText("BD Connector");
+        bdConnector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdConnectorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout adminPanelJLayout = new javax.swing.GroupLayout(adminPanelJ);
         adminPanelJ.setLayout(adminPanelJLayout);
         adminPanelJLayout.setHorizontalGroup(
@@ -192,7 +205,9 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGap(31, 31, 31))
                     .addGroup(adminPanelJLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(modificarRecambio)
+                        .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(modificarRecambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bdConnector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         adminPanelJLayout.setVerticalGroup(
@@ -203,7 +218,9 @@ public class AdminPanel extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(modificarRecambio))
                 .addGap(27, 27, 27)
-                .addComponent(jButton2)
+                .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(bdConnector))
                 .addGap(28, 28, 28)
                 .addComponent(jButton3)
                 .addGroup(adminPanelJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,6 +273,19 @@ public class AdminPanel extends javax.swing.JFrame {
         recambiosModify.setVisible(true);
     }//GEN-LAST:event_modificarRecambioActionPerformed
 
+    private void bdConnectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdConnectorActionPerformed
+        try {
+            // TODO add your handling code here:
+            adminToolsBDChange bd = new adminToolsBDChange();
+            bd.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_bdConnectorActionPerformed
+
     
 
     /**
@@ -296,6 +326,7 @@ public class AdminPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel adminPanelJ;
     private javax.swing.JLabel adminType;
+    private javax.swing.JButton bdConnector;
     private javax.swing.JLabel dadaWdDAWd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

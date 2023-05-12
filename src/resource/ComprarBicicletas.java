@@ -349,6 +349,7 @@ public class ComprarBicicletas extends javax.swing.JFrame {
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
     private void SworksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SworksActionPerformed
