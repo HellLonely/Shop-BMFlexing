@@ -33,8 +33,13 @@ Todas las tecnologias usadas en el proyecto, junto a su version.
         <img src="https://skillicons.dev/icons?i=github" alt="icon" width="65" height="65" >
       <br>GitHub
     </td>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=figma" alt="icon" width="65" height="65" >
+      <br>Figma
+    </td>
   </tr>
 </table>
+
 
 <h2>Inicio y Login</h2>
 
