@@ -61,55 +61,23 @@ public class logSystem {
         }
     }
     
-    public static void jsonPrueba() throws FileNotFoundException, IOException, ParseException{
-        // creating JSONObject
-        JSONObject jo = new JSONObject();
-          
-        // putting data to JSONObject
-        jo.put("firstName", "John");
-        jo.put("lastName", "Smith");
-        jo.put("age", 25);
-          
-        // for address data, first create LinkedHashMap
-        Map m = new LinkedHashMap(4);
-        m.put("streetAddress", "21 2nd Street");
-        m.put("city", "New York");
-        m.put("state", "NY");
-        m.put("postalCode", 10021);
-          
-        // putting address to JSONObject
-        jo.put("address", m);
-          
-        // for phone numbers, first create JSONArray 
-        JSONArray ja = new JSONArray();
-          
-        m = new LinkedHashMap(2);
-        m.put("type", "home");
-        m.put("number", "212 555-1234");
-          
-        // adding map to list
-        ja.add(m);
-          
-        m = new LinkedHashMap(2);
-        m.put("type", "fax");
-        m.put("number", "212 555-1234");
-          
-        // adding map to list
-        ja.add(m);
-          
-        // putting phoneNumbers to JSONObject
-        jo.put("phoneNumbers", ja);
-          
-        // writing JSON to file:"JSONExample.json" in cwd
-        PrintWriter pw = new PrintWriter("src/logs/JSONExample.json");
-        pw.write(jo.toJSONString());
-          
-        pw.flush();
-        pw.close();
-        jsonLecturaConnectionData();
-    }
     
     public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {
+        Object ob = new JSONParser().parse(new FileReader("src/logic/config.json"));
+        JSONObject js = (JSONObject) ob;
+        
+        
+        
+        String arrayDatos[] = new String [3];
+        
+        arrayDatos [0] = (String) js.get("password");
+        arrayDatos [1] = (String) js.get("user");
+        arrayDatos [2] = (String) js.get("jdbc");
+        
+        return arrayDatos;
+    }  
+    
+    /*
         JSONParser parser = new JSONParser();
         
         String arrayDatos[] = new String [3];
@@ -131,6 +99,23 @@ public class logSystem {
         }
         
         return arrayDatos;
-    }  
+    
+    
+    */
+    
+    public static void jsonEscrituraDatos(String jdbc, String user, String password){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("jdbc", jdbc);
+        jsonObject.put("user", user);
+        jsonObject.put("password", password);
+        
+        try (FileWriter writer = new FileWriter("src/logic/config.json")) {
+            writer.write(jsonObject.toJSONString());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
    
 }

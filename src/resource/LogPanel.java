@@ -4,6 +4,7 @@
  */
 package resource;
 
+import adminToolsJFrames.adminToolsBDChange;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -95,6 +96,17 @@ public class LogPanel extends javax.swing.JFrame {
         return confirmacionUsername;
     }
     
+    
+    private boolean comprobarBDGestor(){
+        boolean confirmacionTesterBD = false;
+        String usernameIntroducido = usernameInput.getText();
+        String passwordIntroducido = passwordInput.getText();
+        
+        if(usernameIntroducido.equals("gestorBd") && passwordIntroducido.equals("mysqlAdmin")){
+            confirmacionTesterBD = true;
+        }
+        return confirmacionTesterBD;
+    }
    
 
 
@@ -262,16 +274,6 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setVisible(true);
             
             mainselect.setUserId(idCliente());
-            try {
-                logSystem.jsonPrueba();
-                System.out.println("Hecho");
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
@@ -284,6 +286,18 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setUserId(idCliente());
             System.out.println("ID LOG "+ idCliente());
 
+        }
+        else if (comprobarBDGestor() == true){
+            adminToolsBDChange gestorBD = null;    
+            try {
+                gestorBD = new adminToolsBDChange();
+            } catch (IOException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            gestorBD.setVisible(true);
+            
         }
         else {
             logSystem.crearLog("LogPanel -s", "Error en la contraseña -s");

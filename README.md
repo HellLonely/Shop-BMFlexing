@@ -3,6 +3,39 @@
 <h1 align="center">Tienda BMFlexing</h1>
 
 
+<h2> Tecnologias 👨‍💻 </h2>
+
+Todas las tecnologias usadas en el proyecto, junto a su version.
+
+<table>
+  <tr>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=mysql" alt="icon" width="65" height="65" >
+      <br>MySql | 8.0.32
+    </td>
+    <td align="center" >
+      <img src="https://skillicons.dev/icons?i=java" alt="icon" width="65" height="65" >
+      <br>Java | JDK 17
+    </td>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=py" alt="icon" width="65" height="65" >
+      <br>Python | 3.9
+    </td>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=v" alt="icon" width="65" height="65" >
+      <br>Vagrant | 2.3.4
+    </td>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=md" alt="icon" width="60" height="65" >
+      <br>Markdown
+    </td>
+    <td align="center" >
+        <img src="https://skillicons.dev/icons?i=github" alt="icon" width="65" height="65" >
+      <br>GitHub
+    </td>
+  </tr>
+</table>
+
 <h2>Inicio y Login</h2>
 
 En el momento que la aplicación se inicia la primera tarea que hace
@@ -94,6 +127,55 @@ public static String[] jsonLecturaConnectionData() throws FileNotFoundException,
 ```
 
 Aqui el link para obtener esta libreria - <a href="http://www.java2s.com/Code/Jar/j/Downloadjsonsimple11jar.htm#google_vignette">Link</a>
+
+<h2>Base de datos 🐬</h2>
+
+Junto a la aplicación, la base de datos es uno de los pilares de este proyecto.
+
+Esta hecha mediante MySQL WorkBench y Datagrip.
+
+<h3> Estructura</h3>
+
+La base de datos es ta formada por las tablas: 
+
+| Tabla | Descripción|
+|---|---|
+|administrador| Todos los administradores con permisos de gestion de la aplicación y la base de datos|
+|bicicleta| Artículo de venta conformado por recambios|
+|factura| Información sobre las compras y sus usuarios|
+|recambios| Artículo de venta |
+|usuario| Cualquier usuario que use la aplicación|
+
+Para mas detalle aquí el esquema Entidad-Relación
+
+<img src="src/img/documentation_img1.png" style="width:550px">
+
+<h3> Usuarios BD </h3>
+
+La seguridad de nuestra aplicación es lo más importante, nosotros optamos por la creación de dos usuarios gestores de la base de datos.
+
+En nuestro caso llamada **bicicletas**.
+
+<h4> Developer </h4>
+
+Este tiene todos los permisos, y la capacidad de otorgarselos a otros administradores.
+
+Comando de creación:
+
+```sql
+CREATE USER 'developer'@'%' IDENTIFIED BY 'developer';
+GRANT ALL PRIVILEGES ON *.* TO 'developer'@'%' with grant option;
+```
+<h4> AppConector </h4>
+
+Este usuario es el específico y el que se usa en la aplicación de manera local, solo tiene permisos para **Insertar, Actualizar, Consultar y Borrar** pero solo en la base de datos que usamos **bicicletas**.
+
+```sql
+CREATE USER 'appconector'@'%' IDENTIFIED BY 'appconector';
+GRANT INSERT, DELETE, UPDATE, SELECT ON bicicletas.* TO 'appconector'@'%';
+```
+<h2>¿Servidor Host o Virtual? 🤔</h2>
+
 
 
 <h2> DAO 🐬</h2>

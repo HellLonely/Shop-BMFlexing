@@ -1,7 +1,1 @@
-[
-    {  
-        "jdbc":"jdbc:mysql://localhost/bicicletas",
-        "user":"root",
-        "password":"$cyKnaf9"
-    }
-]
+{"password":"appconector","jdbc":"jdbc:mysql:\/\/127.0.0.1:3307\/bicicletas","user":"appconector"}

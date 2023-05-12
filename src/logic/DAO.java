@@ -31,9 +31,9 @@ public class DAO {
     public static void datos() throws IOException, FileNotFoundException, ParseException{
         String array[] = new String[3];
         array = logSystem.jsonLecturaConnectionData();
-        conectionIp = array[0];
+        conectionIp = array[2];
         userSQL = array[1];
-        passwordSQL = array[2];
+        passwordSQL = array[0];
         
     }
 
@@ -295,7 +295,7 @@ public class DAO {
         return array;
     }
     
-    public static void insertarFactura(int importe, int idCliente, int idEmpleado, String tipo){
+    public static void insertarFactura(int importe, int idCliente, int idEmpleado, String nombre ,String tipo){
         
         String query = "set SQL_SAFE_UPDATES = 0;";
         System.out.println("ID CLIENTE" + idCliente);
@@ -312,7 +312,7 @@ public class DAO {
         }
         
         
-        String query2 = "insert into factura (FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo) values ('"+importe+"','"+idCliente+"','"+idEmpleado+"','"+"Bicicleta personal"+"','"+tipo+"')";
+        String query2 = "insert into factura (FacImporte, FacCliente, FacEmpleado, FacNombreArticulo, FacTipo) values ('"+importe+"','"+idCliente+"','"+idEmpleado+"','"+nombre+"','"+tipo+"')";
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
                 PreparedStatement ps = conexion.prepareStatement(query2)) {
@@ -796,4 +796,25 @@ public class DAO {
         }
     }
      
+     public static int sacarPrecioBicicleta (String Nombre){
+        String query = "select BiPrecio from bicicleta where BiNombre = '"+Nombre+"';";
+        int precio=0;
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ResultSet retorno=ps.executeQuery(query);
+                while (retorno.next()){
+                    precio=retorno.getInt(1);
+                }
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al insertar una tabla en recambio -s");
+        }
+        return precio;
+    }
+     
 }
+
+

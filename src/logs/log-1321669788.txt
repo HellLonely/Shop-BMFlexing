@@ -1,3 +1,0 @@
-Hora:22:35:41 
-Modulo:adminINsertRecambio 
-Instruccion:Error al eliminar una tabla en recambio 
