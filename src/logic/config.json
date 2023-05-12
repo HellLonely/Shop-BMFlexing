@@ -1,7 +1,1 @@
-[
-    {  
-        "jdbc":"jdbc:mysql://192.168.109.21:3306/bicicletas",
-        "user":"usuario1",
-        "password":"usuario1"
-    }
-]
+{"password":"usuario1","jdbc":"jdbc:mysql:\/\/192.168.109.21:3306\/bicicletas","user":"usuario1"}

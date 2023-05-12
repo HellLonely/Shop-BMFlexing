@@ -110,6 +110,21 @@ public class logSystem {
     }
     
     public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {
+        Object ob = new JSONParser().parse(new FileReader("src/logic/config.json"));
+        JSONObject js = (JSONObject) ob;
+        
+        
+        
+        String arrayDatos[] = new String [3];
+        
+        arrayDatos [0] = (String) js.get("password");
+        arrayDatos [1] = (String) js.get("user");
+        arrayDatos [2] = (String) js.get("jdbc");
+        
+        return arrayDatos;
+    }  
+    
+    /*
         JSONParser parser = new JSONParser();
         
         String arrayDatos[] = new String [3];
@@ -131,6 +146,23 @@ public class logSystem {
         }
         
         return arrayDatos;
-    }  
+    
+    
+    */
+    
+    public static void jsonEscrituraDatos(String jdbc, String user, String password){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("jdbc", jdbc);
+        jsonObject.put("user", user);
+        jsonObject.put("password", password);
+        
+        try (FileWriter writer = new FileWriter("src/logic/config.json")) {
+            writer.write(jsonObject.toJSONString());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
    
 }
