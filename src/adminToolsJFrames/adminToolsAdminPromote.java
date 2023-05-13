@@ -32,6 +32,13 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, text,
                 "AVISO", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /*
+     * Imprime en una tabla todos los admins de la tabla administradores.
+     * 
+     * Realizando una consulta en la clase DAO y extraerla en un array.
+     */
+    
     
     private void insertAdminsinTable(){
         DefaultTableModel model = new DefaultTableModel();
@@ -56,6 +63,13 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         }
  
     }
+
+    /*
+     * Imprime en una tabla todos los usuarios de la tabla usuarios.
+     * 
+     * Realizando una consulta en la clase DAO y extraerla en un array.
+     */
+    
     
     private void insertUsersinTable(){
         DefaultTableModel model = new DefaultTableModel();
@@ -317,6 +331,10 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textIdAdminActionPerformed
 
+    /*
+     * Extrae la id de un admin para poder eliminarlo.
+     */
+
     private void deleteAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAdminButtonActionPerformed
         // TODO add your handling code here:
         String idAdmin = textIdAdmin.getText();
@@ -340,6 +358,10 @@ public class adminToolsAdminPromote extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textIdUsuarioActionPerformed
 
+    /*
+     * Extrae la id de un usuario, y lo añade a la tabla de los administradores.
+    */
+    
     private void promoteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promoteUserActionPerformed
         // TODO add your handling code here:
         String idUser = textIdUsuario.getText();

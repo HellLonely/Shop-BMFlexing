@@ -7,8 +7,12 @@ import java.security.NoSuchAlgorithmException;
 
 
 
-
 public class passwordManager {
+
+	/*
+	 * Genera un hash de la contraseña que le pasamos.
+	*/
+
     public static String hashGenerator(String password){
         MessageDigest md = null;
 	try {

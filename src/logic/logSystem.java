@@ -21,6 +21,13 @@ import org.json.simple.parser.ParseException;
 
 
 public class logSystem {
+
+
+    /*
+     * Crea un log con la ayuda de un script de python.
+    */
+
+
     public static void crearLog(String modulo, String errorTipo ){
         System.out.println("Crear log");
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -50,6 +57,10 @@ public class logSystem {
             e.printStackTrace();
         }
     }
+
+    /*
+     * Elimina los logs
+     */
     
     public static void clearLog(){
         File directory = new File("src\\logs");
@@ -61,6 +72,9 @@ public class logSystem {
         }
     }
     
+    /*
+     * Lee las credenciales de la conexión a la base de datos, en el archivo config.json.
+     */
     
     public static String[] jsonLecturaConnectionData() throws FileNotFoundException, IOException, ParseException {
         Object ob = new JSONParser().parse(new FileReader("src/logic/config.json"));
@@ -78,30 +92,8 @@ public class logSystem {
     }  
     
     /*
-        JSONParser parser = new JSONParser();
-        
-        String arrayDatos[] = new String [3];
-        
-        JSONArray a = (JSONArray) parser.parse(new FileReader("src/logic/config.json"));
-        for (Object o : a)
-        {
-          JSONObject object = (JSONObject) o;
-
-          String jdbc = (String) object.get("jdbc");
-          arrayDatos[0] = jdbc;
-
-          String user = (String) object.get("user");
-          arrayDatos[1] = user;
-
-
-          String passwd = (String) object.get("password");
-          arrayDatos[2] = passwd;
-        }
-        
-        return arrayDatos;
-    
-    
-    */
+     * Escribe datos en config.json
+     */
     
     public static void jsonEscrituraDatos(String jdbc, String user, String password){
         JSONObject jsonObject = new JSONObject();

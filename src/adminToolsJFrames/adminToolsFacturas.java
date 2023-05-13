@@ -20,6 +20,10 @@ public class adminToolsFacturas extends javax.swing.JFrame {
         initComponents();
         rellenarTabla();
     }
+
+    /*
+     * Rellenar tabla con los datos de la facturas.
+     */
     
     private void rellenarTabla(){
         DefaultTableModel model = new DefaultTableModel();

@@ -23,6 +23,11 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         rellenarTabla();
         initTipoRecambios();
     }
+
+    /* 
+     * Rellana la tabla con la información de todos los recambios.
+     */
+
     
     private void rellenarTabla(){
         DefaultTableModel model = new DefaultTableModel();
@@ -283,6 +288,10 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_disposeActionPerformed
 
+    /*
+     * Extrae los cambios los cuadros de texto y modifica el recambio en la base de datos.
+     */
+
     private void modifyRecambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRecambioActionPerformed
         int idrecambio = -1;
         int preciorecambio = -1;
@@ -315,6 +324,12 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         
     }//GEN-LAST:event_RecambioIdKeyTyped
 
+
+    /*
+     * Carga la información del recambio seleccionado,
+     * y la introduce en los cuadros de texto.
+     */
+
     private void dataLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataLoadActionPerformed
         // TODO add your handling code here:
         int idrecambio = Integer.parseInt(RecambioId.getText());
@@ -340,6 +355,11 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         
         comboRecambios.setSelectedIndex(selectItem);
     }//GEN-LAST:event_dataLoadActionPerformed
+
+    /*
+     * Elimina el recambio seleccionado, 
+     * emitiendo un popup para confirmar la acción.
+     */
 
     private void recambioDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recambioDeleteActionPerformed
         // TODO add your handling code here:

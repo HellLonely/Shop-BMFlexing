@@ -107,7 +107,21 @@ Para el sistema de los logs se usan dos archivos con distintios lenguajes.
 
 Funciona a partir de una función que se encargar de ejecutar el codigo Python pasandole los parametros necesarios para crear el registro.
 
-<img src="src/img/log1.png" style="width:500px">
+Aqui el script Python para crear los logs.
+
+```python
+file = open("src/logs/log-"+str(seed)+".txt", "w")
+for word in sys.argv:
+
+    if word == 'src\logic\logCreator.py':
+        print(" ")
+    elif "-s" in word:
+        file.write("\n")
+    else:  
+        file.write(word+" ")
+file.close()
+```
+
 
 <h3>¿Cuando se crean los <strong>logs </strong>?</h3>
 
