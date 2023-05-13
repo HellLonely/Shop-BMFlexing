@@ -52,6 +52,10 @@ una de estas depencias es la base de datos, el programa lanzara una advertencia 
     <img src="src/img/warning.png" style="width:270px">
 </div>
 
+Dando opción a cambiar los datos de conexion a la base de datos a los **Administradores** y al gestor de la base de datos. el cual se debe de conectar con el usuario -> "gestorBd" y contraseña -> "mysqlAdmin". Saliendo un panel que le permite configurar las credenciales de conexion.
+
+
+<img src="src/img/documentation_img4.png" style="width:390px">
 
 
 <h2> Administración 👷‍♂️</h2>
@@ -68,6 +72,24 @@ Para administrar **BMFlexing** todos los administradores tendran un panel el cua
     <li>Crear administradores</li>
     <li>Gestionar administradores</li>
 </ol>
+
+<h3>Paquete de administración 📦</h3>
+
+Todas estas herramientas estan alojadas en el paquete **adminToolsJFrames**.
+
+Como su nombre indica las herramientas solo estan disponibles para administradores, funcionan gracias a un panel JFrame solo se muestra a los administradores autenticados.
+
+Cada herramienta funciona como un objeto Java independiente que se crea y se elimina cada vez que se usa. Recordar importar el paquete para usarlo.
+
+```java
+adminToolsFacturas facturas = new adminToolsFacturas();
+facturas.setVisible(true);
+```
+
+Si se quisiera usar el paquete de manera correcta en otras clases recordar importarlo, escogiendo solo una utilidad o todas.
+```java
+import adminToolsJFrames.adminToolsFacturas;
+```
 
 
 <h2>Sistema de logs 📜</h2>
@@ -179,6 +201,8 @@ Este usuario es el específico y el que se usa en la aplicación de manera local
 CREATE USER 'appconector'@'%' IDENTIFIED BY 'appconector';
 GRANT INSERT, DELETE, UPDATE, SELECT ON bicicletas.* TO 'appconector'@'%';
 ```
+>**Nota**: Ambos usuarios se crean de manera automatica en Vagrantfile
+
 <h2>¿Servidor Host o Virtual? 🤔</h2>
 
 Al principio tuvimos dudas sobre si realizar el servidor de MySQL en nuestro equipo host u optar por uno Virtual.
@@ -200,6 +224,16 @@ El equipo virtual cuenta con las siguientes especificaciones.
 Documentación de la ISO - <a href="https://app.vagrantup.com/ubuntu/boxes/mantic64">Link</a>
 
 Documentación de Vagrant - <a href="https://developer.hashicorp.com/vagrant/docs">Link</a>
+
+A parte en el archivo de Vagrant se incluyen instrucciones para instalar el servidor de MySQL. Crear y configurar la base de datos **bicicletas** junto a los usuarios **developer** y **appconector**.
+
+```shell
+config.vm.provision "shell", inline: <<-SHELL
+  sudo apt-get update
+  sudo apt-get install -y mysql-server
+end
+```
+
 
 
 <h2> DAO 🐬</h2>

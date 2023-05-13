@@ -61,13 +61,13 @@ public class adminToolsBDChange extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jdbcText = new javax.swing.JTextField();
         userBD = new javax.swing.JTextField();
-        passwdText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         saveData = new javax.swing.JButton();
         testConecction = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        passwdText = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,8 +143,8 @@ public class adminToolsBDChange extends javax.swing.JFrame {
                                 .addComponent(userBD, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwdText, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(passwdText, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(133, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(saveData)
@@ -274,7 +274,7 @@ public class adminToolsBDChange extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jdbcText;
-    private javax.swing.JTextField passwdText;
+    private javax.swing.JPasswordField passwdText;
     private javax.swing.JButton saveData;
     private javax.swing.JButton testConecction;
     private javax.swing.JTextField userBD;
