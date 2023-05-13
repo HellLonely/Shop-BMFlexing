@@ -181,6 +181,25 @@ GRANT INSERT, DELETE, UPDATE, SELECT ON bicicletas.* TO 'appconector'@'%';
 ```
 <h2>¿Servidor Host o Virtual? 🤔</h2>
 
+Al principio tuvimos dudas sobre si realizar el servidor de MySQL en nuestro equipo host u optar por uno Virtual.
+
+Al final optamos por un servidor virtual ya que nos ofrece ventajas como el aislamiento del entorno, facilidad de configuración, portabilidad, escalabilidad y la capacidad de realizar experimentos y pruebas sin riesgos. Estas características hacen que esta opción sea una elección sólida para desarrollar nuestra aplicación.
+
+Para crear el entorno virtual optamos por usar **Vagrant** y **VirtualBox**.
+
+El equipo virtual cuenta con las siguientes especificaciones.
+
+| Características| Descripción | Comando Vagrant |
+|---|---|---|
+|ISO |Ubuntu Mantic 64| ```config.vm.box = "ubuntu/mantic64"``` |
+|CPU| 1 Procesador | ```vb.cpus = 1```|
+|Memoria RAM| 1024 Mb | ```vb.memory = "1024"``` |
+| Redirección de Puertos (NAT) | Enlace 3306 a 3307 | ```config.vm.network :forwarded_port, guest: 3306, host: 3307``` |
+| Red Host-Only | Red con ip 192.168.0.100 | ```config.vm.network "private_network", ip: "192.168.0.100"```|
+
+Documentación de la ISO - <a href="https://app.vagrantup.com/ubuntu/boxes/mantic64">Link</a>
+
+Documentación de Vagrant - <a href="https://developer.hashicorp.com/vagrant/docs">Link</a>
 
 
 <h2> DAO 🐬</h2>
@@ -203,6 +222,15 @@ Esta clase consta de solo 3 atributos.
 <h4>userSQL y passwordSQL</h3>
 
 Son basicamente el usuario y la contraseña de la conexion a la base de datos.
+
+<h3> Obtención de credenciales 🔐</h3>
+
+Las variables para la conexión de la base de datos **userSQL**, **passwordSQL** y **connectionJDBC**, se obtienen del archivo **config.json**. Gracias a la libreria **JSON Simple 📚**.
+
+<img src="src/img/documentation_img3.png">
+
+> Foto hecha con VsCodeExtension:JSON Crack
+
 
 <h3>Estructura básica de los metodos </h3>
 
