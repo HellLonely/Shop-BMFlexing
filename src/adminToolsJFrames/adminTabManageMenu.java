@@ -27,7 +27,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         insertUsersinTable();
     }
     
-    /*
+    /**
      * Añade al ComboBox los tipos de recambio.
     */
     
@@ -38,7 +38,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         }
     }
     
-    /*
+    /**
      * Imprime en una tabla todos los usuarios de la tabla usuarios.
      * 
      * Realizando una consulta en la clase DAO y extraerla en un array.
@@ -347,7 +347,7 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_precioRecambioInputActionPerformed
 
-    /*
+    /**
      * Obtiene el contenido de los cuadros de texto, comprueba que no este
      * vacio y los inserta en la base de datos.
     */

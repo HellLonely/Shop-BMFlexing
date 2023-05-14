@@ -23,7 +23,7 @@ import org.json.simple.parser.ParseException;
 public class logSystem {
 
 
-    /*
+    /**
      * Crea un log con la ayuda de un script de python.
     */
 
@@ -58,7 +58,7 @@ public class logSystem {
         }
     }
 
-    /*
+    /**
      * Elimina los logs
      */
     
@@ -72,7 +72,7 @@ public class logSystem {
         }
     }
     
-    /*
+    /**
      * Lee las credenciales de la conexión a la base de datos, en el archivo config.json.
      */
     
@@ -91,7 +91,7 @@ public class logSystem {
         return arrayDatos;
     }  
     
-    /*
+    /**
      * Escribe datos en config.json
      */
     

@@ -24,8 +24,8 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         initTipoRecambios();
     }
 
-    /* 
-     * Rellana la tabla con la información de todos los recambios.
+    /**
+     * Rellena la tabla con la información de todos los recambios.
      */
 
     
@@ -288,7 +288,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_disposeActionPerformed
 
-    /*
+    /**
      * Extrae los cambios los cuadros de texto y modifica el recambio en la base de datos.
      */
 
@@ -325,7 +325,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
     }//GEN-LAST:event_RecambioIdKeyTyped
 
 
-    /*
+    /**
      * Carga la información del recambio seleccionado,
      * y la introduce en los cuadros de texto.
      */
@@ -356,7 +356,7 @@ public class adminToolsModifyRecambios extends javax.swing.JFrame {
         comboRecambios.setSelectedIndex(selectItem);
     }//GEN-LAST:event_dataLoadActionPerformed
 
-    /*
+    /**
      * Elimina el recambio seleccionado, 
      * emitiendo un popup para confirmar la acción.
      */

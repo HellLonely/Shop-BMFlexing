@@ -21,7 +21,7 @@ public class adminToolsFacturas extends javax.swing.JFrame {
         rellenarTabla();
     }
 
-    /*
+    /**
      * Rellenar tabla con los datos de la facturas.
      */
     

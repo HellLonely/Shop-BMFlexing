@@ -8,10 +8,6 @@ import java.awt.Color;
 import logic.CreacionFactura;
 import logic.DAO;
 
-/**
- *
- * @author a22ricardova
- */
 public class ComprarBicicletas extends javax.swing.JFrame {
     private int seleccionBici=0;
     private int UserId;
@@ -352,6 +348,11 @@ public class ComprarBicicletas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    /**
+     * Cambia los colores de los fondos de la bicicleta.
+    */
+
+
     private void SworksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SworksActionPerformed
         panelSworks.setBackground(new java.awt.Color(100,130,190));
         panelReign.setBackground(new java.awt.Color(127,179,213));
@@ -363,6 +364,10 @@ public class ComprarBicicletas extends javax.swing.JFrame {
         panelSworks.setBackground(new java.awt.Color(127,179,213));
         seleccionBici=2;
     }//GEN-LAST:event_ReignActionPerformed
+
+    /**
+     * Al comprar una bicleta se genera una factura dependiendo de la selección.
+     */
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         factura=crearFactura();
