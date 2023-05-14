@@ -780,6 +780,8 @@ public class DAO {
         }
     }
      
+     
+     
     public static void deleteRecambio(int RecambioId){
         String query = "delete from recambios where ReId = "+RecambioId+";";
         try (Connection conexion = DriverManager.getConnection(
@@ -850,7 +852,7 @@ public class DAO {
     }
      
      public static void updateUserName(int UsId, String UsNombre){
-        String query = "update usuario set UsNombre = '"+UsNombre+"' where UsId = "+UsId+";";
+        String query = "update usuario set UsNombre =S '"+UsNombre+"' where UsId = "+UsId+";";
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
                 PreparedStatement ps = conexion.prepareStatement(query)) {
