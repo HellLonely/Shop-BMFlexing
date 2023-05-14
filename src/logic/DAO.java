@@ -815,6 +815,42 @@ public class DAO {
         return precio;
     }
      
+    public static String[] getUserData(int IdUsuario){
+        String[] array = new String[2];
+        String sentencia = "select UsNombre, UsContraseña from usuario where UsId="+IdUsuario+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+             PreparedStatement ps = conexion.prepareStatement(sentencia)
+        ) {
+
+            ResultSet resultado = ps.executeQuery(sentencia);
+            while(resultado.next()){
+                array[0] =  resultado.getString(1);
+                array[1] = resultado.getString(2);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                + "\nSLQState: " + e.getSQLState()
+                + "\nMensaje: " + e.getMessage());
+        }
+        return array;
+    }
+    
+     public static void updateUserPassword(int UsId, String UsContraseña){
+        String query = "update usuario set UsContraseña = '"+UsContraseña+"' where UsId = "+UsId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al actualizar una tabla en recambio -s");
+        }
+    }
+     
 }
 
 
