@@ -247,6 +247,7 @@ Documentación de la ISO - <a href="https://app.vagrantup.com/ubuntu/boxes/manti
 
 Documentación de Vagrant - <a href="https://developer.hashicorp.com/vagrant/docs">Link</a>
 
+
 A parte en el archivo de Vagrant se incluyen instrucciones para instalar el servidor de MySQL. Crear y configurar la base de datos **bicicletas** junto a los usuarios **developer** y **appconector**.
 
 ```shell
@@ -329,3 +330,8 @@ A lo largo de todo el proyecto se utilizan varias consultas a la base de datos. 
 |```getAllRecambios()```|Extrae la información de todos los **Recambios** mostrandolos en la aplicación.|
 |```getRecambio()```|Extrae la información de un **Recambio**.|
 |```updateRecambio()```|Modifica las informacion de un solo **Recambio**.|
+|```deleteRecambio()```| Elimina un  **Recambio** mediante su id.|
+|``` sacarPrecioBicicleta()```| Obtener el precio de una bicicleta. |
+|```getUserData()```| Obtiene los datos de un **Usuario**|
+|```updateUserPassword()```| Cambia la contraseña del **Usuario**|
+|```updateUserName()```|Cambia el nombre del **Usuario**|

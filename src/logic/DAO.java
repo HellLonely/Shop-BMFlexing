@@ -1,5 +1,3 @@
-
-
 package logic;
 
 import java.io.FileNotFoundException;
@@ -839,6 +837,20 @@ public class DAO {
     
      public static void updateUserPassword(int UsId, String UsContraseña){
         String query = "update usuario set UsContraseña = '"+UsContraseña+"' where UsId = "+UsId+";";
+        try (Connection conexion = DriverManager.getConnection(
+                conectionIp, userSQL, passwordSQL);
+                PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Código de Error: " + e.getErrorCode()
+                    + "\nSLQState: " + e.getSQLState()
+                    + "\nMensaje: " + e.getMessage());
+            logSystem.crearLog("adminINsertRecambio -s", "Error al actualizar una tabla en recambio -s");
+        }
+    }
+     
+     public static void updateUserName(int UsId, String UsNombre){
+        String query = "update usuario set UsNombre = '"+UsNombre+"' where UsId = "+UsId+";";
         try (Connection conexion = DriverManager.getConnection(
                 conectionIp, userSQL, passwordSQL);
                 PreparedStatement ps = conexion.prepareStatement(query)) {

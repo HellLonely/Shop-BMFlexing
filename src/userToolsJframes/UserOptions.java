@@ -76,6 +76,7 @@ public class UserOptions extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         passwordChange = new javax.swing.JButton();
+        buttonChangeName = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +140,13 @@ public class UserOptions extends javax.swing.JFrame {
             }
         });
 
+        buttonChangeName.setText("Cambiar Nombre");
+        buttonChangeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonChangeNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,23 +162,26 @@ public class UserOptions extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(passwordChange)
                                 .addGap(18, 18, 18)
                                 .addComponent(imageButton)
-                                .addGap(0, 218, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonChangeName)
+                                .addGap(0, 78, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordChange)
-                    .addComponent(imageButton))
+                    .addComponent(imageButton)
+                    .addComponent(buttonChangeName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -222,6 +233,13 @@ public class UserOptions extends javax.swing.JFrame {
         pass.setUserId(userId);
     }//GEN-LAST:event_passwordChangeActionPerformed
 
+    private void buttonChangeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeNameActionPerformed
+        // TODO add your handling code here:
+        userToolsUsernameChange username = new userToolsUsernameChange();
+        username.setVisible(true);
+        username.setUserId(userId);
+    }//GEN-LAST:event_buttonChangeNameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +276,7 @@ public class UserOptions extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonChangeName;
     private javax.swing.JButton imageButton;
     private javax.swing.JLabel imageUser;
     private javax.swing.JButton jButton1;
