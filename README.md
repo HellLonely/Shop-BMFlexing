@@ -3,13 +3,13 @@
 <h1 align="center">Tienda BMFlexing</h1>
 
 
-<h2>Proyecto creado por 
+<h4>Proyecto creado por 
 <ul>
   <li>Ricardo Vega </li>
   <li>Yeison González </li>
 </ul>
 
-</h2>
+</h4>
 
 <h2> Tecnologias 👨‍💻 </h2>
 
