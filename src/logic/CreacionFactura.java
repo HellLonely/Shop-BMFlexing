@@ -13,6 +13,7 @@ public class CreacionFactura {
     private int idCliente;
     private int idEmpleado;
     private String tipo;
+    private String nome;
 
     public CreacionFactura(int precioInicial, String tipo) {
         this.tipo = tipo;
@@ -50,6 +51,14 @@ public class CreacionFactura {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
     

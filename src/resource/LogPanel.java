@@ -274,16 +274,6 @@ public class LogPanel extends javax.swing.JFrame {
             mainselect.setVisible(true);
             
             mainselect.setUserId(idCliente());
-            try {
-                logSystem.jsonPrueba();
-                System.out.println("Hecho");
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(LogPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
         }else if(comprobarInputUsername() == true){
             this.setVisible(false);
