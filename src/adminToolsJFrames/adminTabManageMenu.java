@@ -27,6 +27,10 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         insertUsersinTable();
     }
     
+    /**
+     * Añade al ComboBox los tipos de recambio.
+    */
+    
     private void initTipoRecambios(){
         String[] metodos = {"ruedas", "shock", "horquila", "cuadro", "frenos"};
         for (String metodo : metodos){
@@ -34,6 +38,11 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Imprime en una tabla todos los usuarios de la tabla usuarios.
+     * 
+     * Realizando una consulta en la clase DAO y extraerla en un array.
+     */
     
     private void insertUsersinTable(){
         DefaultTableModel model = new DefaultTableModel();
@@ -46,8 +55,6 @@ public class adminTabManageMenu extends javax.swing.JFrame {
         UsersTable.setModel(model);
         
         String[][] dato = DAO.getUsuariosDatos();
-        
-    
         
         for (int i =0; i<dato.length;i++){
             String [] input = new String[4];
@@ -339,6 +346,11 @@ public class adminTabManageMenu extends javax.swing.JFrame {
     private void precioRecambioInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioRecambioInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precioRecambioInputActionPerformed
+
+    /**
+     * Obtiene el contenido de los cuadros de texto, comprueba que no este
+     * vacio y los inserta en la base de datos.
+    */
 
     private void insertButtonRecambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonRecambioActionPerformed
         // TODO add your handling code here:

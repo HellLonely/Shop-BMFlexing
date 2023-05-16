@@ -11,10 +11,6 @@ import logic.CreacionFactura;
 
 import logic.DAO;
 
-/**
- *
- * @author a22ricardova
- */
 public class ConfBicicletas extends javax.swing.JFrame {
 
     /**
@@ -41,6 +37,11 @@ public class ConfBicicletas extends javax.swing.JFrame {
         rellenarHorquillaComboBox();
     
     }
+
+    /**
+     * Rellena todos los ComboBox con la información 
+     * de la base de datos.
+     */
     
     private void rellenarCuadroComboBox(){
         String[] array = DAO.piezasCuadro();
@@ -316,36 +317,46 @@ public class ConfBicicletas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CuadroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuadroActionPerformed
-        String nombreCuadro;
-        nombreCuadro= (String) Cuadro.getSelectedItem();
-        String nombreRuedas;
-        nombreRuedas= (String) Ruedas.getSelectedItem();
-        String nombreHorquilla;
-        nombreHorquilla= (String) Horquilla.getSelectedItem();
-        String nombreFrenos;
-        nombreFrenos= (String) Frenos.getSelectedItem();
-        String nombreShock;
-        nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
+    /**
+     * Obtener todos los items de los ComboBox
+     * 
+     * @return arrayPiezas
+     */
+    
+    private String[] obtenerSelecteItems(){
+        String[] arrayPiezas = new String[5];
+        arrayPiezas[0] = (String) Cuadro.getSelectedItem();
+        arrayPiezas[1] = (String) Ruedas.getSelectedItem();
+        arrayPiezas[2] = (String) Horquilla.getSelectedItem();
+        arrayPiezas[3] = (String) Frenos.getSelectedItem();
+        arrayPiezas[4] = (String) Shock.getSelectedItem();
+        
+        return arrayPiezas;
+    }
+    
+    /**
+     * Cambiar el precio con los items de los ComboBox
+     */
+    
+    private void setNuevoPrecio(){
+        String [] arrayPiezas = obtenerSelecteItems();
+        int nuevoPrecio=DAO.actualizarPrecios(arrayPiezas[0])+DAO.actualizarPrecios(arrayPiezas[1])+DAO.actualizarPrecios(arrayPiezas[2])+DAO.actualizarPrecios(arrayPiezas[3])+DAO.actualizarPrecios(arrayPiezas[4]);
         String setPrecio= Integer.toString(nuevoPrecio);
         PrecioFinal.setText(setPrecio);
+    }
+    
+    /**
+     * Cada vez que se actualiza un ComboBox se cambia el precio
+     * 
+     * @param evt 
+     */
+
+    private void CuadroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuadroActionPerformed
+        setNuevoPrecio();
     }//GEN-LAST:event_CuadroActionPerformed
 
     private void RuedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RuedasActionPerformed
-        String nombreCuadro;
-        nombreCuadro= (String) Cuadro.getSelectedItem();
-        String nombreRuedas;
-        nombreRuedas= (String) Ruedas.getSelectedItem();
-        String nombreHorquilla;
-        nombreHorquilla= (String) Horquilla.getSelectedItem();
-        String nombreFrenos;
-        nombreFrenos= (String) Frenos.getSelectedItem();
-        String nombreShock;
-        nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock); 
-        String setPrecio= Integer.toString(nuevoPrecio);
-        PrecioFinal.setText(setPrecio);
+        setNuevoPrecio();
     }//GEN-LAST:event_RuedasActionPerformed
 
     private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
@@ -359,52 +370,15 @@ public class ConfBicicletas extends javax.swing.JFrame {
     }//GEN-LAST:event_comprarActionPerformed
 
     private void HorquillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorquillaActionPerformed
-        String nombreCuadro;
-        nombreCuadro= (String) Cuadro.getSelectedItem();
-        String nombreRuedas;
-        nombreRuedas= (String) Ruedas.getSelectedItem();
-        String nombreHorquilla;
-        nombreHorquilla= (String) Horquilla.getSelectedItem();
-        String nombreFrenos;
-        nombreFrenos= (String) Frenos.getSelectedItem();
-        String nombreShock;
-        nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        String setPrecio= Integer.toString(nuevoPrecio);
-        PrecioFinal.setText(setPrecio);
+        setNuevoPrecio();
     }//GEN-LAST:event_HorquillaActionPerformed
 
     private void FrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrenosActionPerformed
-        String nombreCuadro;
-        nombreCuadro= (String) Cuadro.getSelectedItem();
-        String nombreRuedas;
-        nombreRuedas= (String) Ruedas.getSelectedItem();
-        String nombreHorquilla;
-        nombreHorquilla= (String) Horquilla.getSelectedItem();
-        String nombreFrenos;
-        nombreFrenos= (String) Frenos.getSelectedItem();
-        String nombreShock;
-        nombreShock= (String) Shock.getSelectedItem();
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        String setPrecio= Integer.toString(nuevoPrecio);
-        PrecioFinal.setText(setPrecio);
+        setNuevoPrecio();
     }//GEN-LAST:event_FrenosActionPerformed
 
     private void ShockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShockActionPerformed
-        String nombreCuadro;
-        nombreCuadro= (String) Cuadro.getSelectedItem();
-        String nombreRuedas;
-        nombreRuedas= (String) Ruedas.getSelectedItem();
-        String nombreHorquilla;
-        nombreHorquilla= (String) Horquilla.getSelectedItem();
-        String nombreFrenos;
-        nombreFrenos= (String) Frenos.getSelectedItem();
-        String nombreShock;
-        nombreShock= (String) Shock.getSelectedItem();
-        System.out.println(nombreShock);
-        int nuevoPrecio=DAO.actualizarPrecios(nombreCuadro)+DAO.actualizarPrecios(nombreRuedas)+DAO.actualizarPrecios(nombreHorquilla)+DAO.actualizarPrecios(nombreFrenos)+DAO.actualizarPrecios(nombreShock);
-        String setPrecio= Integer.toString(nuevoPrecio);
-        PrecioFinal.setText(setPrecio);
+        setNuevoPrecio();
     }//GEN-LAST:event_ShockActionPerformed
 
     private void PrecioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioFinalActionPerformed

@@ -4,10 +4,6 @@
  */
 package logic;
 
-/**
- *
- * @author a22ricardova
- */
 public class CreacionFactura {
     private int precioTotal;
     private int idCliente;
