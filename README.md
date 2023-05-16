@@ -277,6 +277,19 @@ config.vm.provision "shell", inline: <<-SHELL
 end
 ```
 
+<h2> Interfaces y Figma </h2>
+
+A lo largo de todo el proyecto hemos usado interfaces gráficas, estas estan diseñadas con **Java Swing**. Pero todo el diseño previo se ha desarrollado mediante el software **Figma**.
+
+**Figma** nos a ayudado a lo largo del proyecto a maquetar todas las interfaces, con los diseños iniciales y con las paletas de colores.
+
+Os mostramos una pequeña conparativa:
+
+<div style="display:flex;">
+<img src="src/img/documentation_img5.png" style="width:350px;">
+<img src="src/img/documentation_img6.png" style="width:350px;">
+</div>
+
 
 
 <h2> DAO 🐬</h2>
@@ -311,7 +324,7 @@ Las variables para la conexión de la base de datos **userSQL**, **passwordSQL**
 
 <h3>Estructura básica de los metodos </h3>
 
-Todos los metodos contiene una estructura llamada **try-width-resources**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas. 
+Todos los metodos contiene una estructura llamada **try-with-resources**, que siempre probara a conectarse a la base de datos, pasando como parametros las variables antes mencionadas. 
 
 ``` Java
 try (Connection conexion = DriverManager.getConnection(conectionIp, userSQL, passwordSQL);PreparedStatement ps = conexion.prepareStatement(sentenciaSQL))
