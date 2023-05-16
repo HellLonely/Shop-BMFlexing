@@ -87,7 +87,7 @@ Todas estas herramientas estan alojadas en el paquete **adminToolsJFrames**.
 
 Como su nombre indica las herramientas solo estan disponibles para administradores, funcionan gracias a un panel JFrame solo se muestra a los administradores autenticados.
 
-Cada herramienta funciona como un objeto Java independiente que se crea y se elimina cada vez que se usa. Recordar importar el paquete para usarlo.
+Cada herramienta funciona como un objeto Java independiente que se crea y se elimina cada vez que se usa. Recordar importar el paquete al usarlo.
 
 ```java
 adminToolsFacturas facturas = new adminToolsFacturas();
@@ -97,6 +97,26 @@ facturas.setVisible(true);
 Si se quisiera usar el paquete de manera correcta en otras clases recordar importarlo, escogiendo solo una utilidad o todas.
 ```java
 import adminToolsJFrames.adminToolsFacturas;
+```
+<h2>Usuarios 👩🏼‍🤝‍🧑🏿</h2>
+
+Nuestra aplicación cuenta con un sistema para gestionar a los **Usuarios** tanto desde el lado de los **Administradores** como desde la parte de los usuarios.
+
+Las herramientas de los administradores para gestionar los usuarios se encuentran en el paquete **adminToolsJFrames**.
+
+<h3>Paquete de usuarios 📦</h3>
+
+Aquí se encuentras las herramientas accesibles por el usuario para gestionar su información.
+
++ Cambiar foto de perfil.
++ Cambiar su nombre de usuario.
++ Cambiar su contraseña.
+
+Funciona de la misma manera que el paquete **adminToolsJFrames**.
+
+```java
+userToolsUsernameChange username = new userToolsUsernameChange();
+username.setVisible(true);
 ```
 
 
