@@ -122,7 +122,7 @@ public class LogPanel extends javax.swing.JFrame {
     /**
      * Comprueba si el usuario logueado es un gestor de la base de datos.
      * @return 
-     */
+    */
     
     
     private boolean comprobarBDGestor(){

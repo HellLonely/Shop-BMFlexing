@@ -131,14 +131,12 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         bicisMontadas = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-<<<<<<< HEAD
+
         userSettings = new javax.swing.JButton();
-=======
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         recambios = new javax.swing.JButton();
->>>>>>> e1cbae7ef897c68cf799646d93e45b455683270c
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -459,19 +457,19 @@ public class MainPanel extends javax.swing.JFrame {
         System.out.println("ID MAIN"+ userID);
     }//GEN-LAST:event_bicisMontadasActionPerformed
 
-<<<<<<< HEAD
+
     private void userSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSettingsActionPerformed
         UserOptions userSettings = new UserOptions();
         userSettings.setVisible(true);
         userSettings.setUserId(userID);
     }//GEN-LAST:event_userSettingsActionPerformed
-=======
+
     private void recambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recambiosActionPerformed
         ComprarRecambios recambios = new ComprarRecambios();
         recambios.setVisible(true);
         recambios.setUserId(userID);
     }//GEN-LAST:event_recambiosActionPerformed
->>>>>>> e1cbae7ef897c68cf799646d93e45b455683270c
+
 
     /**
      * @param args the command line arguments
@@ -533,10 +531,7 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel labelUsername;
-<<<<<<< HEAD
     private javax.swing.JButton userSettings;
-=======
     private javax.swing.JButton recambios;
->>>>>>> e1cbae7ef897c68cf799646d93e45b455683270c
     // End of variables declaration//GEN-END:variables
 }

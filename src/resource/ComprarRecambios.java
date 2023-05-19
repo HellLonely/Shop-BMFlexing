@@ -107,7 +107,7 @@ public class ComprarRecambios extends javax.swing.JFrame {
 
         jLabel5.setText("Recambio");
 
-        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         nombreObjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreObjetoActionPerformed(evt);

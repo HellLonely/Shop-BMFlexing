@@ -63,7 +63,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
     /**
      * Pide un Feedback para confirmar si eliminar los archivos log.
-     */
+    */
 
     private void showAdvertisment(){
         int respuesta = JOptionPane.showConfirmDialog(this, "¿ Quieres elmininar todos los registros del Log ?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
