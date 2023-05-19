@@ -465,7 +465,7 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_userSettingsActionPerformed
 
     private void recambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recambiosActionPerformed
-        ComprarRecambios recambios = new ComprarRecambios();
+        CompRecambios recambios = new CompRecambios();
         recambios.setVisible(true);
         recambios.setUserId(userID);
     }//GEN-LAST:event_recambiosActionPerformed
