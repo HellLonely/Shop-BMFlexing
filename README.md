@@ -163,6 +163,23 @@ Por el momento la unica opción para gestionar los logs de la aplicación
 se encuentra en las funcionalidades de **Admin**, que presenta un botón para
 eliminar los logs ```clearLog()```
 
+<h2> Testing Externo 🔧</h2>
+
+Para cualquier persona ajena al desarrollo del proyecto se que es un coñazo buscar en **BMFlexing - DataBase.sql** las credenciales de acceso dejamos aquí un par de ellas 🤗.
+
+|Permisos|Usuario|Contraseña|
+|---|---|---|
+|Administración| SuperAdmin|renaido|
+|Administración | BMFlexing Shop | renaido |
+|Usuario | ad | renaido|
+
+Aqui la misma lista pero sobre la propia base de datos.
+
+|Permisos|Usuario|Contraseña|
+|---|---|---|
+|All |developer|developer|
+|INSERT, DELETE, UPDATE, SELECT|appconector|appconector|
+
 <h2> Librerias 📚</h2>
 
 En el proyecto de estamos usadando por el momento 2 librerias.
