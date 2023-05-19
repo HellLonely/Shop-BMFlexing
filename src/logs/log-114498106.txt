@@ -1,3 +1,0 @@
-Hora:13:53:04 
-Modulo:DAO 
-Instruccion:Error al conectar con la base de datos. 

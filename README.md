@@ -277,7 +277,7 @@ config.vm.provision "shell", inline: <<-SHELL
 end
 ```
 
-<h2> Interfaces y Figma </h2>
+<h2> Interfaces y Figma 🎨</h2>
 
 A lo largo de todo el proyecto hemos usado interfaces gráficas, estas estan diseñadas con **Java Swing**. Pero todo el diseño previo se ha desarrollado mediante el software **Figma**.
 
