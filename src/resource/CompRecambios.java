@@ -97,8 +97,14 @@ public class CompRecambios extends javax.swing.JFrame {
         jLabel3.setText("Selecciona el tipo:");
 
         cantidad.setText("1");
+        cantidad.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                cantidadCaretUpdate(evt);
+            }
+        });
         cantidad.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                cantidadCaretPositionChanged(evt);
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 cantidadInputMethodTextChanged(evt);
@@ -109,10 +115,15 @@ public class CompRecambios extends javax.swing.JFrame {
                 cantidadActionPerformed(evt);
             }
         });
+        cantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cantidadPropertyChange(evt);
+            }
+        });
 
         jLabel4.setText("cantidad");
 
-        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         nombreObjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreObjetoActionPerformed(evt);
@@ -303,10 +314,7 @@ public class CompRecambios extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
-<<<<<<< HEAD
-=======
-        // TODO add your handling code here:
->>>>>>> db84ce56df32c05fc4d937d4cc2948a8411c8bd6
+
         dispose();
     }//GEN-LAST:event_CerrarActionPerformed
 
@@ -317,6 +325,37 @@ public class CompRecambios extends javax.swing.JFrame {
         String setPrecio= Integer.toString(finalP);
         precioFinal.setText(setPrecio);
     }//GEN-LAST:event_cantidadInputMethodTextChanged
+
+    private void cantidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cantidadPropertyChange
+        // TODO add your handling code here:
+        int cantidadRec= Integer.parseInt(cantidad.getText());
+        int precio = DAO.actualizarPrecios((String) nombreObjeto.getSelectedItem());
+        int finalP= precio * cantidadRec;
+        String setPrecio= Integer.toString(finalP);
+        precioFinal.setText(setPrecio);
+    }//GEN-LAST:event_cantidadPropertyChange
+
+    private void cantidadCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cantidadCaretPositionChanged
+        // TODO add your handling code here:
+        int cantidadRec= Integer.parseInt(cantidad.getText());
+        int precio = DAO.actualizarPrecios((String) nombreObjeto.getSelectedItem());
+        int finalP= precio * cantidadRec;
+        String setPrecio= Integer.toString(finalP);
+        precioFinal.setText(setPrecio);
+    }//GEN-LAST:event_cantidadCaretPositionChanged
+
+    private void cantidadCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_cantidadCaretUpdate
+        // TODO add your handling code here:
+        try{
+            int cantidadRec= Integer.parseInt(cantidad.getText());
+            int precio = DAO.actualizarPrecios((String) nombreObjeto.getSelectedItem());
+            int finalP= precio * cantidadRec;
+            String setPrecio= Integer.toString(finalP);
+            precioFinal.setText(setPrecio);
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_cantidadCaretUpdate
 
     /**
      * @param args the command line arguments
