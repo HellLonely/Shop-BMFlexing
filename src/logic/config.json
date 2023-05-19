@@ -1,1 +1,1 @@
-{"password":"usuario1","jdbc":"jdbc:mysql:\/\/192.168.109.21:3306\/bicicletas","user":"usuario1"}
+{"password":"appconector","jdbc":"jdbc:mysql:\/\/127.0.0.1:3307\/bicicletas","user":"appconector"}

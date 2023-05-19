@@ -4,7 +4,9 @@
  */
 package resource;
 
+import userToolsJframes.UserOptions;
 import javax.swing.JOptionPane;
+import logic.DAO;
 import logic.logSystem;
 
 /**
@@ -24,14 +26,14 @@ public class MainPanel extends javax.swing.JFrame {
     public void setUsername(String username) {
         this.username = username;
         labelUsername.setText(username);
-        
+        updateUserImage();
         changeProfileImg(username);
         
     }
     
     public void setUserId(int id){
         this.userID = id;
-        
+        updateUserImage();
     }
     
     public void setBoolean(boolean admin){
@@ -89,6 +91,22 @@ public class MainPanel extends javax.swing.JFrame {
         admin.setTitle(username + " | Panel Administrativo");
     } 
     
+    private String imgNameGenerator(){
+        String[] arrayDatos = new String[2];
+        arrayDatos = DAO.getUserData(userID);
+        String passwdSub = arrayDatos[1].substring(1,6);
+        String nameImage = arrayDatos[0]+"-"+passwdSub;
+        return nameImage;
+    }
+
+    private void updateUserImage(){
+       try {
+           jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userImages/"+imgNameGenerator()+".jpg")));
+       }catch(Exception e){
+           jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profile_img.png")));
+       }
+    }
+    
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -113,6 +131,8 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         bicisMontadas = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+
+        userSettings = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -353,6 +373,13 @@ public class MainPanel extends javax.swing.JFrame {
 
         ActionMenu.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
+        userSettings.setText("Ajustes Usuario");
+        userSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userSettingsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -360,15 +387,20 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAdmin)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 36, Short.MAX_VALUE)))
-                .addGap(4, 4, 4)
+                            .addComponent(labelUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buttonAdmin)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(0, 36, Short.MAX_VALUE)))
+                        .addGap(4, 4, 4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(ActionMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -382,6 +414,8 @@ public class MainPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(userSettings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdmin)
                 .addGap(31, 31, 31))
             .addComponent(ActionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
@@ -423,11 +457,19 @@ public class MainPanel extends javax.swing.JFrame {
         System.out.println("ID MAIN"+ userID);
     }//GEN-LAST:event_bicisMontadasActionPerformed
 
+
+    private void userSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSettingsActionPerformed
+        UserOptions userSettings = new UserOptions();
+        userSettings.setVisible(true);
+        userSettings.setUserId(userID);
+    }//GEN-LAST:event_userSettingsActionPerformed
+
     private void recambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recambiosActionPerformed
         CompRecambios recambios = new CompRecambios();
         recambios.setVisible(true);
         recambios.setUserId(userID);
     }//GEN-LAST:event_recambiosActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -489,6 +531,7 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel labelUsername;
+    private javax.swing.JButton userSettings;
     private javax.swing.JButton recambios;
     // End of variables declaration//GEN-END:variables
 }

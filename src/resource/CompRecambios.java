@@ -112,7 +112,7 @@ public class CompRecambios extends javax.swing.JFrame {
 
         jLabel4.setText("cantidad");
 
-        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nombreObjeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         nombreObjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreObjetoActionPerformed(evt);
@@ -303,6 +303,10 @@ public class CompRecambios extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
+<<<<<<< HEAD
+=======
+        // TODO add your handling code here:
+>>>>>>> db84ce56df32c05fc4d937d4cc2948a8411c8bd6
         dispose();
     }//GEN-LAST:event_CerrarActionPerformed
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bceb78dc-82eb-4fe9-ae72-243e84103693" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2OuJHH5rFKM4MV9cuB6kkeBbZgZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "Z:/Yeison González/Proyecto Final/Shop-BMFlexing/src/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\Yeison González\Proyecto Final\Shop-BMFlexing\src\img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\Yeison González\Proyecto Final\Shop-BMFlexing\src\img" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bceb78dc-82eb-4fe9-ae72-243e84103693" name="Changes" comment="" />
+      <created>1682404444203</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682404444203</updated>
+      <workItem from="1682404445010" duration="1731000" />
+      <workItem from="1682423470591" duration="130000" />
+      <workItem from="1682491186774" duration="4000" />
+      <workItem from="1682509723426" duration="690000" />
+      <workItem from="1682510479127" duration="791000" />
+      <workItem from="1682577204887" duration="12000" />
+      <workItem from="1682581631232" duration="186000" />
+      <workItem from="1682584019649" duration="5994000" />
+      <workItem from="1682592011594" duration="3779000" />
+      <workItem from="1682663846551" duration="63000" />
+      <workItem from="1682663928301" duration="231000" />
+      <workItem from="1682664180816" duration="2620000" />
+      <workItem from="1682667390249" duration="820000" />
+      <workItem from="1682676201211" duration="31000" />
+      <workItem from="1682682538690" duration="1571000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

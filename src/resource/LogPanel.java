@@ -22,10 +22,6 @@ import logic.passwordManager;
 import org.json.simple.parser.ParseException;
 
 
-/**
- *
- * @author Hell
- */
 public class LogPanel extends javax.swing.JFrame {
 
     /**
@@ -48,6 +44,15 @@ public class LogPanel extends javax.swing.JFrame {
     /* Nuestros metodos internos */
     
     private int id;
+    
+    /**
+     * Comprueba la conexión a la base de datos.
+     * 
+     * 
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws ParseException 
+     */
      
     private void comprobarSistema() throws IOException, FileNotFoundException, ParseException{
         if (DAO.dataBaseTestConection () == false){
@@ -55,6 +60,13 @@ public class LogPanel extends javax.swing.JFrame {
             logSystem.crearLog("DAO -s","Error al conectar con la base de datos. -s");
         }
     }
+    
+    /**
+     * Comprueba si el username y la password 
+     * coinciden con la base de datos.
+     * 
+     * @return confirmacionUsername
+     */
     
     private boolean comprobarInputUsername(){
         boolean confirmacionUsername = false;
@@ -75,12 +87,23 @@ public class LogPanel extends javax.swing.JFrame {
         return confirmacionUsername;
     }
     
+    /**
+     * Obtiene el id del usuario.
+     * 
+     * @return id
+     */
+    
     private int idCliente(){
         String usernameIntroducido = usernameInput.getText();
         String passwordIntroducido = passwordInput.getText();
         id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
         return id;
     }
+    
+    /**
+     * Comprueba si el usuario logueado es un administrador.
+     * @return 
+     */
     
     private boolean comprobarAdministrador(){
         boolean confirmacionUsername = false;
@@ -95,6 +118,11 @@ public class LogPanel extends javax.swing.JFrame {
         
         return confirmacionUsername;
     }
+    
+    /**
+     * Comprueba si el usuario logueado es un gestor de la base de datos.
+     * @return 
+    */
     
     
     private boolean comprobarBDGestor(){
@@ -261,7 +289,14 @@ public class LogPanel extends javax.swing.JFrame {
     private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed
 
     }//GEN-LAST:event_usernameInputActionPerformed
-
+    
+    /**
+     * Redirección de usuario segun sus permisos.
+     * 
+     * @param evt 
+     */
+    
+    
     private void logButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButonActionPerformed
         String name = usernameInput.getText();
         

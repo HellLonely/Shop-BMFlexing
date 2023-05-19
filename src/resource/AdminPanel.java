@@ -43,18 +43,27 @@ public class AdminPanel extends javax.swing.JFrame {
     
     
     
-    
+    /**
+     * Cambia el panel por el nombre del usuario.
+     */
     
     public void setUsername(String username) {
         this.username = username;
-        System.out.println(username + "1");
         usernameAdmin.setText(username);
         setAdminType(username);
     }
+
+    /**
+     * Cambia el panel por el tipo de admin.
+     */
     
     private void setAdminType(String username){
        adminType.setText( DAO.getAdminTipo(username));
     }
+
+    /**
+     * Pide un Feedback para confirmar si eliminar los archivos log.
+    */
 
     private void showAdvertisment(){
         int respuesta = JOptionPane.showConfirmDialog(this, "¿ Quieres elmininar todos los registros del Log ?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -237,6 +246,11 @@ public class AdminPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    /**
+     * Los siguientes metodos llamán a las utilidades del paqute adminToolsJFrames
+     */
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
