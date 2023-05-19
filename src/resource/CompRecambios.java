@@ -97,6 +97,13 @@ public class CompRecambios extends javax.swing.JFrame {
         jLabel3.setText("Selecciona el tipo:");
 
         cantidad.setText("1");
+        cantidad.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                cantidadInputMethodTextChanged(evt);
+            }
+        });
         cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidadActionPerformed(evt);
@@ -296,8 +303,16 @@ public class CompRecambios extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_CerrarActionPerformed
+
+    private void cantidadInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cantidadInputMethodTextChanged
+        int cantidadRec= Integer.parseInt(cantidad.getText());
+        int precio = DAO.actualizarPrecios((String) nombreObjeto.getSelectedItem());
+        int finalP= precio * cantidadRec;
+        String setPrecio= Integer.toString(finalP);
+        precioFinal.setText(setPrecio);
+    }//GEN-LAST:event_cantidadInputMethodTextChanged
 
     /**
      * @param args the command line arguments
