@@ -63,15 +63,18 @@ public class userToolsPasswordChange extends javax.swing.JFrame {
         String usernameIntroducido = array[0];
         String passwordIntroducido = passwordInput1.getText();
         System.out.println(passwordIntroducido);
+        
+        String hashPasswordGenerated;
+                
+        passwordManager hashPassword = new passwordManager(passwordIntroducido);
+        hashPasswordGenerated = hashPassword.hashGenerator();
 
-        passwordIntroducido = passwordManager.hashGenerator(passwordIntroducido);
-        System.out.println(passwordIntroducido);
-       if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
+       if ( DAO.loginUser(usernameIntroducido, hashPasswordGenerated) == true){
            confirmacionUsername = true;
 
-           int id=DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
+           int id=DAO.getIdCliente(usernameIntroducido, hashPasswordGenerated);
 
-           id = DAO.getIdCliente(usernameIntroducido, passwordIntroducido);
+           id = DAO.getIdCliente(usernameIntroducido, hashPasswordGenerated);
            
        }
         
@@ -223,8 +226,14 @@ public class userToolsPasswordChange extends javax.swing.JFrame {
     private void changePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordActionPerformed
         if(comprobarContraseñas() == true && comprobarInputUsername() == true){
             String passwordNuevo = nuevaPassword.getText();
-            passwordNuevo = passwordManager.hashGenerator(passwordNuevo);
-            DAO.updateUserPassword(userId, passwordNuevo);
+            
+            String hashPasswordGenerated;
+                
+            passwordManager hashPassword = new passwordManager(passwordNuevo);
+            hashPasswordGenerated = hashPassword.hashGenerator();
+            
+            
+            DAO.updateUserPassword(userId, hashPasswordGenerated);
             showInfo("Se a cambiado la contraseña con exito.");
             dispose();
         }else if(comprobarContraseñas() == false){

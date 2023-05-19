@@ -227,12 +227,17 @@ public class NewUserPanel extends javax.swing.JFrame {
             if( comprobacionContraseñas == false){
                 showMessage("Las contraseñas no coinciden");
             }else {
-                String hashPassword = passwordCreateInput.getText();
-
-                System.out.println(hashPassword);
-                hashPassword = passwordManager.hashGenerator(hashPassword);
+                String hashPasswordget = passwordCreateInput.getText();
+                
+                String hashPasswordGenerated;
+                
+                passwordManager hashPassword = new passwordManager(hashPasswordget);
+                hashPasswordGenerated = hashPassword.hashGenerator();
+                
+                
+                
                 String selection = (String) paymentMethod.getSelectedItem();
-                DAO.insertNewUser(username,hashPassword,selection);
+                DAO.insertNewUser(username,hashPasswordGenerated,selection);
                 logSystem.crearLog("NewUserPanel -s","Se ha creado un usuario nuevo -s");
                 dispose();
             }

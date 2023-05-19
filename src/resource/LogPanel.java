@@ -72,8 +72,9 @@ public class LogPanel extends javax.swing.JFrame {
         boolean confirmacionUsername = false;
         String usernameIntroducido = usernameInput.getText();
         String passwordIntroducido = passwordInput.getText();
-
-        passwordIntroducido = passwordManager.hashGenerator(passwordIntroducido);
+        
+        passwordManager hashPassword = new passwordManager(passwordIntroducido);
+        passwordIntroducido = hashPassword.hashGenerator();
 
        if ( DAO.loginUser(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
@@ -110,8 +111,8 @@ public class LogPanel extends javax.swing.JFrame {
         String usernameIntroducido = usernameInput.getText();
         String passwordIntroducido = passwordInput.getText();
 
-        passwordIntroducido = passwordManager.hashGenerator(passwordIntroducido);
-
+        passwordManager hashPassword = new passwordManager(passwordIntroducido);
+        passwordIntroducido = hashPassword.hashGenerator();
        if ( DAO.loginAdmin(usernameIntroducido, passwordIntroducido) == true){
            confirmacionUsername = true;
        }

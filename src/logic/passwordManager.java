@@ -12,8 +12,15 @@ public class passwordManager {
     /**
      * Genera un hash de la contraseña que le pasamos.
     */
+    
+    private String nativePassword;
 
-    public static String hashGenerator(String password) {
+    public passwordManager(String nativePassword) {
+        this.nativePassword = nativePassword;
+    }
+    
+
+    public String hashGenerator() {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-256");
@@ -21,7 +28,7 @@ public class passwordManager {
             e.printStackTrace();
         }
 
-        byte[] hash = md.digest(password.getBytes());
+        byte[] hash = md.digest(nativePassword.getBytes());
         StringBuffer sb = new StringBuffer();
 
         for (byte b : hash) {
