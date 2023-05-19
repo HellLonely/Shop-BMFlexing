@@ -297,6 +297,7 @@ public class CompRecambios extends javax.swing.JFrame {
 
     private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_CerrarActionPerformed
 
     /**
